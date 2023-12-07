@@ -14,12 +14,17 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name',100);
-            $table->string('nick',100);
+            $table->string('address',200);
+            $table->integer('zip_code');
+            $table->string('town',100);
+            $table->string('phone',12);
+            $table->string('DNI',10);
+            $table->date('birthdate');
             $table->string('email',100)->unique();
             $table->string('password',10);
-            $table->timestamps();
             $table->enum("roles",["user","admin","superadmin"])->default("user");
             $table->boolean("is_active")->default(true);
+            $table->timestamps();
         });
     }
 
