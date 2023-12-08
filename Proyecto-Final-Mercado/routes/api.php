@@ -29,11 +29,11 @@ Route::post('/login', [UserController::class, 'login']);
 Route::group([
     'middleware' => ['auth:sanctum', 'is_superadmin']
 ], function () {
-    Route::post('/videogame', [VideogameController::class, 'createVideogame']);
-    Route::put('/videogame/{id}', [VideogameController::class, 'updateVideogameById']);
-    Route::delete('/videogame/{id}', [VideogameController::class, 'deleteVideogameById']);
+    // Route::post('/videogame', [VideogameController::class, 'createVideogame']);
+    // Route::put('/videogame/{id}', [VideogameController::class, 'updateVideogameById']);
+    // Route::delete('/videogame/{id}', [VideogameController::class, 'deleteVideogameById']);
     Route::put('/users/activate/{id}', [UserController::class, 'activate']);
-    Route::get('/allMessages', [UserController::class, 'getAllMessages']);
+    Route::get('/allUsers', [UserController::class, 'getAllUsers']);
 });
 Route::group([
     'middleware' => ['auth:sanctum']
@@ -45,18 +45,18 @@ Route::group([
     Route::put('/users', [UserController::class, 'updateUsers']);
     Route::put('/users/password', [UserController::class, 'changePassword']);
     Route::put('/users/inactivate', [UserController::class, 'inactivate']);
-    Route::get('/videogames', [VideogameController::class, 'getAllVideogames']);
-    Route::get('/videogame/{id}', [VideogameController::class, 'getVideogameById']);
-    Route::post('/rooms', [RoomController::class, 'createRoom']);
-    Route::get('/rooms', [RoomController::class, 'getRooms']);
-    Route::get('/rooms/{id}', [RoomController::class, 'getRoomsbyVideogame']);
-    Route::delete('/rooms/{id}', [RoomController::class, 'deleteRoom']);
-    Route::put('/rooms/{id}', [RoomController::class, 'updateRoom']);
-    Route::post('/member', [MemberController::class, 'createMember']);
-    Route::delete('/member', [MemberController::class, 'deleteMember']);
-    Route::get('/members', [MemberController::class, 'getMembers']);
-    Route::post('/message', [MessageController::class, 'create']);
-    Route::get('/messages/{id}', [MessageController::class, 'getMessages']);
-    Route::delete('/messages/{id}', [MessageController::class, 'deleteMessage']);
-    Route::put('/message/{id}', [MessageController::class, 'editMessage']);
+    // Route::get('/videogames', [VideogameController::class, 'getAllVideogames']);
+    // Route::get('/videogame/{id}', [VideogameController::class, 'getVideogameById']);
+    // Route::post('/rooms', [RoomController::class, 'createRoom']);
+    // Route::get('/rooms', [RoomController::class, 'getRooms']);
+    // Route::get('/rooms/{id}', [RoomController::class, 'getRoomsbyVideogame']);
+    // Route::delete('/rooms/{id}', [RoomController::class, 'deleteRoom']);
+    // Route::put('/rooms/{id}', [RoomController::class, 'updateRoom']);
+    // Route::post('/member', [MemberController::class, 'createMember']);
+    // Route::delete('/member', [MemberController::class, 'deleteMember']);
+    // Route::get('/members', [MemberController::class, 'getMembers']);
+    // Route::post('/message', [MessageController::class, 'create']);
+    // Route::get('/messages/{id}', [MessageController::class, 'getMessages']);
+    // Route::delete('/messages/{id}', [MessageController::class, 'deleteMessage']);
+    // Route::put('/message/{id}', [MessageController::class, 'editMessage']);
 });
