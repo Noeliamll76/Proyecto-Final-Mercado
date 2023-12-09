@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-// use App\Models\Message;
-// use App\Models\Room;
 // use App\Models\User;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,7 +11,6 @@ use illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\PersonalAccessToken;
-
 
 class UserController extends Controller
 {
@@ -29,7 +26,6 @@ class UserController extends Controller
             'email' => 'required|unique:users|email',
             'password' => 'required|min:8|max:10',
         ]);
-
         return $validator;
     }
 
@@ -105,10 +101,10 @@ class UserController extends Controller
             if ($user->is_active === 0) {
                 throw new Error('Is active false');
             }
-            if (!$user) {
-                throw new Error('invalid');
-            }
-            if (!Hash::check($password, $user->password)) {
+            // if (!$user) {
+            //     throw new Error('invalid');
+            // }
+            if (!$user || !Hash::check($password, $user->password)) {
                 throw new Error('invalid');
             }
             $token = $user->createToken('userToken')->plainTextToken;
@@ -212,7 +208,6 @@ class UserController extends Controller
             $phone = $request->input('phone');
             $email = $request->input('email');
 
-
             if ($user->is_active === 0) {
                 throw new Error('Is active false');
             }
@@ -253,14 +248,12 @@ class UserController extends Controller
                 }
                 $user->email = $email;
             }
-
             $user->save();
 
             $accessToken = $request->bearerToken();
             $token = PersonalAccessToken::findToken($accessToken);
             $token->delete();
 
-            $token = $user->createToken('userToken')->plainTextToken;
             return response()->json(
                 [
                     "success" => true,
@@ -302,13 +295,10 @@ class UserController extends Controller
     public function changePassword(Request $request)
     {
         try {
-
             $user = User::query()->find(auth()->user()->id);
-
             if ($user->is_active === 0) {
                 throw new Error('Is active false');
             }
-
             $password = $request->input('password');
             if ($request->has('password')) {
                 if (strlen($password) >= 8 && strlen($password) <= 10) {
@@ -318,11 +308,9 @@ class UserController extends Controller
                 }
             }
             $user->save();
-
             $accessToken = $request->bearerToken();
             $token = PersonalAccessToken::findToken($accessToken);
             $token->delete();
-
             return response()->json(
                 [
                     "success" => true,
@@ -365,10 +353,8 @@ class UserController extends Controller
         try {
             $userId = Auth::id();
             $user = User::query()->find($userId);
-
             $user->is_active = false;
             $user->save();
-
             return response()->json(
                 [
                     "success" => true,
@@ -412,7 +398,6 @@ class UserController extends Controller
             );
         }
     }
-
 
     public function getAllMessages(Request $request)
     {

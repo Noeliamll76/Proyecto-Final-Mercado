@@ -2,9 +2,12 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Foundation\Console\ViewClearCommand;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
@@ -19,6 +22,12 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'address',
+        'zip_code',
+        'town',
+        'phone',
+        'DNI',
+        'birthdate',
         'email',
         'password',
     ];
@@ -42,4 +51,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function baskets(): HasMany
+    {
+        return $this->hasMany(Basket::class);
+    }
+    
 }
