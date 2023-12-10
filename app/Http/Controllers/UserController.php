@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-// use App\Models\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Error;
@@ -150,6 +150,7 @@ class UserController extends Controller
     {
         try {
             $user = auth()->user();
+                 
             if ($user->is_active === 0) {
                 throw new Error('Is active false');
             }
@@ -374,53 +375,4 @@ class UserController extends Controller
         }
     }
 
-    public function activate(Request $request, $id)
-    {
-        try {
-            $user = User::query()->find($id);
-            $user->is_active = true;
-            $user->save();
-            return response()->json(
-                [
-                    "success" => true,
-                    "message" => "User is activated"
-                ],
-                Response::HTTP_OK
-            );
-        } catch (\Throwable $th) {
-            Log::error($th->getMessage());
-            return response()->json(
-                [
-                    "success" => false,
-                    "message" => "Error activated user"
-                ],
-                Response::HTTP_INTERNAL_SERVER_ERROR
-            );
-        }
-    }
-
-    public function getAllMessages(Request $request)
-    {
-        try {
-            $users = User::query()->get();
-            return response()->json(
-                [
-                    "success" => true,
-                    "message" => "Get all users successfully",
-                    "data" => $users
-                ],
-                Response::HTTP_OK
-            );
-        } catch (\Throwable $th) {
-            Log::error($th->getMessage());
-
-            return response()->json(
-                [
-                    "success" => false,
-                    "message" => "Error getting all users"
-                ],
-                Response::HTTP_INTERNAL_SERVER_ERROR
-            );
-        }
-    }
 }

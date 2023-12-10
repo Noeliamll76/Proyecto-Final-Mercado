@@ -1,10 +1,7 @@
 <?php
 
-use App\Http\Controllers\MemberController;
-use App\Http\Controllers\MessageController;
-use App\Http\Controllers\RoomController;
+use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\VideogameController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -29,34 +26,17 @@ Route::post('/login', [UserController::class, 'login']);
 Route::group([
     'middleware' => ['auth:sanctum', 'is_superadmin']
 ], function () {
-    // Route::post('/videogame', [VideogameController::class, 'createVideogame']);
-    // Route::put('/videogame/{id}', [VideogameController::class, 'updateVideogameById']);
-    // Route::delete('/videogame/{id}', [VideogameController::class, 'deleteVideogameById']);
-    Route::put('/users/activate/{id}', [UserController::class, 'activate']);
-    Route::get('/allUsers', [UserController::class, 'getAllUsers']);
+    Route::put('/users/activate/{id}', [SuperAdminController::class, 'activate']);
+    Route::put('/users/role/{id}', [SuperAdminController::class, 'changeRole']);
+    Route::get('/allUsers', [SuperAdminController::class, 'getAllUsers']);
 });
+
 Route::group([
     'middleware' => ['auth:sanctum']
 ], function () {
-
-
-    Route::get('/profile', [UserController::class, 'profile']);
-    Route::post('/logout', [UserController::class, 'logout']);
-    Route::put('/users', [UserController::class, 'updateUsers']);
+    Route::get('/users/profile', [UserController::class, 'profile']);
+    Route::post('/users/logout', [UserController::class, 'logout']);
+    Route::put('/users/update', [UserController::class, 'updateUsers']);
     Route::put('/users/password', [UserController::class, 'changePassword']);
     Route::put('/users/inactivate', [UserController::class, 'inactivate']);
-    // Route::get('/videogames', [VideogameController::class, 'getAllVideogames']);
-    // Route::get('/videogame/{id}', [VideogameController::class, 'getVideogameById']);
-    // Route::post('/rooms', [RoomController::class, 'createRoom']);
-    // Route::get('/rooms', [RoomController::class, 'getRooms']);
-    // Route::get('/rooms/{id}', [RoomController::class, 'getRoomsbyVideogame']);
-    // Route::delete('/rooms/{id}', [RoomController::class, 'deleteRoom']);
-    // Route::put('/rooms/{id}', [RoomController::class, 'updateRoom']);
-    // Route::post('/member', [MemberController::class, 'createMember']);
-    // Route::delete('/member', [MemberController::class, 'deleteMember']);
-    // Route::get('/members', [MemberController::class, 'getMembers']);
-    // Route::post('/message', [MessageController::class, 'create']);
-    // Route::get('/messages/{id}', [MessageController::class, 'getMessages']);
-    // Route::delete('/messages/{id}', [MessageController::class, 'deleteMessage']);
-    // Route::put('/message/{id}', [MessageController::class, 'editMessage']);
 });
