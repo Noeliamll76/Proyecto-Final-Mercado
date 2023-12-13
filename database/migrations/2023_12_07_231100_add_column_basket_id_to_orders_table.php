@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('guild', function (Blueprint $table) {
-            $table->id();
-            $table->string('guild_name',100);
-            $table->timestamps();
+        Schema::table('orders', function (Blueprint $table) {
+            $table->unsignedBigInteger('basket_id');
+            $table->foreign('basket_id')->references('id')->on('basket');
         });
     }
 
@@ -23,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('guild');
+        Schema::table('orders', function (Blueprint $table) {
+            //
+        });
     }
 };

@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('store', function (Blueprint $table) {
-            $table->unsignedBigInteger('guild_id');
-            $table->foreign('guild_id')->references('id')->on('guild');
+        Schema::create('guilds', function (Blueprint $table) {
+            $table->id();
+            $table->string('name',100);
+            $table->timestamps();
         });
     }
 
@@ -22,8 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('store_table_after_location', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('guilds');
     }
 };

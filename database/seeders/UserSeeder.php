@@ -42,7 +42,7 @@ class UserSeeder extends Seeder
                 'birthdate' => '1990/08/15',
                 'email' => 'superadmin@superadmin.com',
                 'password' => Hash::make('password'),
-                'roles' => "superadmin"
+                'roles' => "superAdmin"
             ]
         );
 

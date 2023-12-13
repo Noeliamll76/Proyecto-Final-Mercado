@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('store', function (Blueprint $table) {
+        Schema::create('stores', function (Blueprint $table) {
             $table->id();
-            $table->string('store_name',100);
-            $table->string('store_owner',100);
+            $table->string('name',100);
+            $table->string('owner',100);
             $table->string('location',100);
             
             $table->boolean("is_active")->default(true);
-            $table->text('store_image',500);
+            $table->text('image',500);
             $table->text('description',500);
             $table->string('email',100)->unique();
             $table->foreign('email')->references('email')->on('users');
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('store');
+        Schema::dropIfExists('stores');
     }
 };

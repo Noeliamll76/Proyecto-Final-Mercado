@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('order', function (Blueprint $table) {
-            $table->unsignedBigInteger('basket_id');
-            $table->foreign('basket_id')->references('id')->on('basket');
+        Schema::table('stores', function (Blueprint $table) {
+            $table->unsignedBigInteger('guild_id');
+            $table->foreign('guild_id')->references('id')->on('guilds');
         });
     }
 
@@ -22,7 +22,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('order', function (Blueprint $table) {
+        Schema::table('storesn', function (Blueprint $table) {
             //
         });
     }
