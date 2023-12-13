@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StoresController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -39,4 +40,5 @@ Route::group([
     Route::put('/users/update', [UserController::class, 'updateUsers']);
     Route::put('/users/password', [UserController::class, 'changePassword']);
     Route::put('/users/inactivate', [UserController::class, 'inactivate']);
+    Route::post('/stores/register', [StoresController::class, 'storeRegister']);
 });

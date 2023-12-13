@@ -101,9 +101,7 @@ class UserController extends Controller
             if ($user->is_active === 0) {
                 throw new Error('Is active false');
             }
-            // if (!$user) {
-            //     throw new Error('invalid');
-            // }
+            
             if (!$user || !Hash::check($password, $user->password)) {
                 throw new Error('invalid');
             }

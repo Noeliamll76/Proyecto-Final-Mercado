@@ -31,7 +31,7 @@ class Basket extends Model
 
     public function products(): BelongsToMany
     {
-        return $this->belongsToMany(Product::class,'order');
+        return $this->belongsToMany(Product::class,'orders');
     }
 
     public function orders(): HasMany

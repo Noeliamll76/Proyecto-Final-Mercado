@@ -2,18 +2,19 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Auth\Events\Authenticated;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Foundation\Console\ViewClearCommand;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class Store extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory;
 
     /**
      * The attributes that are mass assignable.
@@ -22,12 +23,12 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'address',
-        'zip_code',
-        'town',
-        'phone',
-        'DNI',
-        'birthdate',
+        'owner',
+        'location',
+        'guild_id',
+        'is_active',
+        'image',
+        'description',
         'email',
         'password',
     ];
@@ -52,9 +53,17 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function basket(): HasMany
+    public function product(): HasMany
     {
-        return $this->hasMany(Basket::class);
+        return $this->hasMany(Product::class);
+    }
+    public function type(): BelongsToMany
+    {
+        return $this->belongsToMany(Type::class,'products');
     }
     
+    public function guild(): BelongsTo
+    {
+        return $this->belongsTo(Guild::class);
+    }
 }
