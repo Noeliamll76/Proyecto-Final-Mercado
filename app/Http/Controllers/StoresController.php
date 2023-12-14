@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Store;
+use App\Models\Guild;
 use Symfony\Component\HttpFoundation\Response;
 use Error;
 use Illuminate\Support\Facades\Hash;
@@ -21,7 +22,7 @@ class StoresController extends Controller
             'name' => 'required|min:3|max:100',
             'owner' => 'required|min:3|max:100',
             'location' => 'required|min:3|max:100',
-            'guild_id' => 'required|unique',
+            'guild_id' => 'required',
             'description' => 'required|min:3|max:500',
         ]);
         return $validator;
@@ -44,13 +45,24 @@ class StoresController extends Controller
             $name=$request->input('name');
             $owner=$request->input('owner');
             $location=$request->input('location');
-            $guild_id=$request->input('guild_id');
             $is_active=$request->input('is_active');
             $image=$request->input('image');
             $description=$request->input('description');
             $email=auth()->user()->email;
             $password=auth()->user()->password;
             $roles=auth()->user()->roles;
+            
+            $guild_id=$request->input('guild_id');
+            if(!$guild = Guild::query()->find($guild_id)){
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "No existe este guild",
+                    ],
+                    Response::HTTP_NOT_FOUND
+                );
+            }
+
 
             $newStore = Store::create(
                 [

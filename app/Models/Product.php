@@ -18,8 +18,10 @@ class Product extends Model
         'caliber',
         'variety',
         'origin',
-        'prince',
+        'price',
         'product_image',
+        'name',
+        
     ];
 
     public function store(): BelongsTo

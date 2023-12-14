@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('type_id');
             $table->foreign('type_id')->references('id')->on('types');
-            // $table->unsignedBigInteger('store_id');
-            // $table->foreign('store_id')->references('id')->on('store');
             $table->string('caliber',50);
             $table->string('variety',50);
             $table->string('origin',50);
