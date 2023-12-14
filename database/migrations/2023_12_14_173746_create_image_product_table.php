@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('orders', function (Blueprint $table) {
-            $table->unsignedBigInteger('basket_id');
-            $table->foreign('basket_id')->references('id')->on('basket');
+        Schema::create('image_product', function (Blueprint $table) {
+            $table->id();
+            $table->string('name_product',100);
+            $table->string('variety',100);
+            $table->text('image',500);
+            $table->timestamps();
         });
     }
 
@@ -22,8 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('orders', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('image_product');
     }
 };

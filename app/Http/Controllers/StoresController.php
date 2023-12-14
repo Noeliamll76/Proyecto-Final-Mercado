@@ -42,18 +42,18 @@ class StoresController extends Controller
                     Response::HTTP_BAD_REQUEST
                 );
             }
-            $name=$request->input('name');
-            $owner=$request->input('owner');
-            $location=$request->input('location');
-            $is_active=$request->input('is_active');
-            $image=$request->input('image');
-            $description=$request->input('description');
-            $email=auth()->user()->email;
-            $password=auth()->user()->password;
-            $roles=auth()->user()->roles;
-            
-            $guild_id=$request->input('guild_id');
-            if(!$guild = Guild::query()->find($guild_id)){
+            $name = $request->input('name');
+            $owner = $request->input('owner');
+            $location = $request->input('location');
+            $is_active = true;
+            $image = $request->input('image');
+            $description = $request->input('description');
+            $email = auth()->user()->email;
+            $password = auth()->user()->password;
+            $roles = auth()->user()->roles;
+
+            $guild_id = $request->input('guild_id');
+            if (!$guild = Guild::query()->find($guild_id)) {
                 return response()->json(
                     [
                         "success" => false,
@@ -63,19 +63,18 @@ class StoresController extends Controller
                 );
             }
 
-
             $newStore = Store::create(
                 [
                     "name" => $name,
                     "owner" => $owner,
                     "location" => $location,
                     "guild_id" => $guild_id,
-                    "is_active"=> $is_active,
+                    "is_active" => $is_active,
                     "image" => $image,
                     "description" => $description,
                     "email" => $email,
                     "password" => $password,
-                    "roles"=> $roles
+                    "roles" => $roles
                 ]
             );
             return response()->json(
@@ -92,11 +91,10 @@ class StoresController extends Controller
                 [
                     "success" => false,
                     "message" => "Salgo por el catch Error registering store",
-                    "data"=> $name
+                    
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );
         }
     }
-
 }

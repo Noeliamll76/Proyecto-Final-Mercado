@@ -13,15 +13,14 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
-        'type_id',
+        'category_id',
         'store_id',
-        'caliber',
+        'name',
         'variety',
         'origin',
         'price',
-        'product_image',
-        'name',
-        
+        'image',
+              
     ];
 
     public function store(): BelongsTo
@@ -29,16 +28,19 @@ class Product extends Model
         return $this->belongsTo(Store::class);
     }
 
-    public function type(): BelongsTo
+    public function category(): BelongsTo
     {
-        return $this->belongsTo(Type::class);
+        return $this->belongsTo(Category::class);
+    }
+    public function image_product(): BelongsTo
+    {
+        return $this->belongsTo(Image_product::class);
     }
 
-    public function baskets(): BelongsToMany
+    public function users(): BelongsToMany
     {
-        return $this->belongsToMany(Basket::class,'order');
+        return $this->belongsToMany(User::class,'orders');
     }
-
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class);

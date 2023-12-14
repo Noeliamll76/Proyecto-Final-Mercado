@@ -6,19 +6,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Guild extends Model
+class Image_product extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name',
+        'name_product',
+        'variety',
+        'image',
+       
     ];
 
-    public function stores(): HasMany
+    public function products(): HasMany
     {
-        return $this->hasMany(Store::class);
-    }
-    public function categories(): HasMany
-    {
-        return $this->hasMany(Category::class);
+        return $this->hasMany(Product::class);
     }
 }

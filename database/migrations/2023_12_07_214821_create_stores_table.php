@@ -16,12 +16,14 @@ return new class extends Migration
             $table->string('name',100);
             $table->string('owner',100);
             $table->string('location',100);
+            $table->unsignedBigInteger('guild_id');
+            $table->foreign('guild_id')->references('id')->on('guilds');
             $table->boolean("is_active")->default(true);
             $table->text('image',500);
             $table->text('description',500);
             $table->string('email',100)->unique();
             $table->foreign('email')->references('email')->on('users');
-            $table->string('password',10);
+            $table->string('password',255);
             $table->enum("roles",["admin"])->default("admin");
             $table->timestamps();
         });

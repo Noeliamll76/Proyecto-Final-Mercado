@@ -52,9 +52,13 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function basket(): HasMany
-    {
-        return $this->hasMany(Basket::class);
-    }
     
+    public function products(): BelongsToMany
+    {
+        return $this->belongsToMany(Product::class,'orders');
+    }
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
+    }
 }
