@@ -20,7 +20,6 @@ class Product extends Model
         'origin',
         'price',
         'image',
-              
     ];
 
     public function store(): BelongsTo
@@ -32,6 +31,7 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
+    
     public function image_product(): BelongsTo
     {
         return $this->belongsTo(Image_product::class);

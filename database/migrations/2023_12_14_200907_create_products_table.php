@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
-            $table->unsignedBigInteger('store_id',50);
+            $table->unsignedBigInteger('store_id');
             $table->foreign('store_id')->references('id')->on('stores');
             $table->string('name',100);
             $table->string('variety',100);
