@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
+Route::post('/stores/login', [StoresController::class, 'login']);
 
 Route::group([
     'middleware' => ['auth:sanctum', 'is_superadmin']
@@ -42,4 +43,6 @@ Route::group([
     Route::put('/users/password', [UserController::class, 'changePassword']);
     Route::put('/users/inactivate', [UserController::class, 'inactivate']);
     Route::post('/stores/register', [StoresController::class, 'storeRegister']);
+    Route::get('/stores/profile', [StoresController::class, 'storeProfile']);
+    
 });
