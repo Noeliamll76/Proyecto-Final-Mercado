@@ -20,7 +20,6 @@ return new class extends Migration
             $table->text('image',500);
             $table->text('description',500);
             $table->string('email',100)->unique();
-            $table->foreign('email')->references('email')->on('users');
             $table->string('password',255);
             $table->enum("roles",["admin"])->default("admin");
             $table->timestamps();

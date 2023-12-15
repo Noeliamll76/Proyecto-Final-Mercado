@@ -22,7 +22,7 @@ return new class extends Migration
             $table->date('birthdate');
             $table->string('email',100)->unique();
             $table->string('password',255);
-            $table->enum("roles",["user","admin","superadmin"])->default("user");
+            $table->enum("roles",["user","admin","superAdmin"])->default("user");
             $table->boolean("is_active")->default(true);
             $table->timestamps();
         });

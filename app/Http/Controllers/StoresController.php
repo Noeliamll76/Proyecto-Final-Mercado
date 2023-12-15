@@ -52,8 +52,8 @@ class StoresController extends Controller
             $email = auth()->user()->email;
             $password = auth()->user()->password;
             $roles = auth()->user()->roles;
-
             $guild_id = $request->input('guild_id');
+
             if (!$guild = Guild::query()->find($guild_id)) {
                 return response()->json(
                     [
@@ -81,7 +81,7 @@ class StoresController extends Controller
             return response()->json(
                 [
                     "success" => true,
-                    "message" => "Store registered",
+                    "message" => "store registered",
                     "data" => $newStore
                 ],
                 Response::HTTP_CREATED
@@ -156,9 +156,9 @@ class StoresController extends Controller
             $description = $request->input('description');
             $email = $request->input('email');
 
-            // if ($store->is_active === 0) {
-            //     throw new Error('Is active false');
-            // }
+            if ($store->is_active === 0) {
+                throw new Error('Is active false');
+            }
             if ($request->has('name')) {
                 if (strlen($name) > 3 && strlen($name) < 100) {
                     $store->name = $name;
