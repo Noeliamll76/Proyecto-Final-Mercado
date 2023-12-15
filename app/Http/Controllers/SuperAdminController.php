@@ -19,6 +19,7 @@ class SuperAdminController extends Controller
         try {
             $user = User::query()->find($id);
             $user->is_active = true;
+           
             $user->save();
             return response()->json(
                 [

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+
+use App\Models\Store;
+
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Error;
@@ -199,6 +202,7 @@ class UserController extends Controller
     {
         try {
             $user = User::query()->find(auth()->user()->id);
+// $store= Store::query()->find(auth()->user()->email);
 
             $name = $request->input('name');
             $address = $request->input('address');
@@ -213,6 +217,7 @@ class UserController extends Controller
             if ($request->has('name')) {
                 if (strlen($name) > 3 && strlen($name) < 100) {
                     $user->name = $name;
+                    // $store->owner = $user->name;
                 } else {
                     throw new Error('invalid');
                 }
@@ -246,8 +251,10 @@ class UserController extends Controller
                     throw new Error('invalid');
                 }
                 $user->email = $email;
+                // $store->email = $user->email;
             }
             $user->save();
+            // $store->save();
 
             $accessToken = $request->bearerToken();
             $token = PersonalAccessToken::findToken($accessToken);
@@ -298,15 +305,20 @@ class UserController extends Controller
             if ($user->is_active === 0) {
                 throw new Error('Is active false');
             }
+            // $store= Store::query()->find(auth()->user()->email);
+
             $password = $request->input('password');
             if ($request->has('password')) {
                 if (strlen($password) >= 8 && strlen($password) <= 10) {
                     $user->password = bcrypt($password);
+                    // $store->password = $user->password;
                 } else {
                     throw new Error('invalid');
                 }
             }
             $user->save();
+            // $store->save();
+
             $accessToken = $request->bearerToken();
             $token = PersonalAccessToken::findToken($accessToken);
             $token->delete();
