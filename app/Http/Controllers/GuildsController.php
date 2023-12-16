@@ -81,4 +81,42 @@ class GuildsController extends Controller
             );
         }
     }
+
+    public function guildDelete(Request $request, $id)
+    {
+        try {
+            $guild = Guild::query()->find($id);
+
+            if (!$guild) {
+                throw new Error('invalid');
+            }
+
+            $guild->delete();
+            return response()->json(
+                [
+                    "success" => true,
+                    "message" => "Guild delete"
+                ],
+                Response::HTTP_OK
+            );
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+            if ($th->getMessage() === 'invalid') {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "This guild doesn't exist"
+                    ],
+                    Response::HTTP_NOT_FOUND
+                );
+            }
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error delete guild"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
 }

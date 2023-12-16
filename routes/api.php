@@ -37,6 +37,7 @@ Route::group([
     Route::get('/allGuilds', [SuperAdminController::class, 'getAllGuilds']);
     Route::post('/guilds/register', [GuildsController::class, 'guildRegister']);
     Route::put('/guilds/update/{id}', [GuildsController::class, 'guildUpdate']);
+    Route::delete('/guilds/delete/{id}', [GuildsController::class, 'guildDelete']);
 
 });
 
