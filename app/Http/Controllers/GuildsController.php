@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Guild;
 use Symfony\Component\HttpFoundation\Response;
 use illuminate\Support\Facades\Log;
+use Error;
 
 
 class GuildsController extends Controller
@@ -33,6 +34,48 @@ class GuildsController extends Controller
                 [
                     "success" => false,
                     "message" => "Error registering guild"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
+
+    public function guildUpdate(Request $request, $id)
+    {
+        try {
+            $guild = Guild::query()->find($id);
+            $name = $request->input('name');
+
+            if ($request->has('name')) {
+                if (strlen($name) > 3 && strlen($name) < 100) {
+                    $guild->name = $name;
+                } else {
+                    throw new Error('invalid');
+                }
+            }
+            $guild->save();
+            return response()->json(
+                [
+                    "success" => true,
+                    "message" => "Guild update"
+                ],
+                Response::HTTP_OK
+            );
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+            if ($th->getMessage() === 'invalid') {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "Data are invalid"
+                    ],
+                    Response::HTTP_NOT_FOUND
+                );
+            }
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error update guild"
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );

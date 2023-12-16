@@ -35,6 +35,7 @@ Route::group([
     Route::put('/users/role/{id}', [SuperAdminController::class, 'changeRole']);
     Route::get('/allUsers', [SuperAdminController::class, 'getAllUsers']);
     Route::post('/guilds/register', [GuildsController::class, 'guildRegister']);
+    Route::put('/guilds/update/{id}', [GuildsController::class, 'guildUpdate']);
 
 });
 
