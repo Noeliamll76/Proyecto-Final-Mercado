@@ -3,6 +3,9 @@
 use App\Http\Controllers\StoresController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\GuildsController;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -23,7 +26,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
-// Route::post('/stores/login', [StoresController::class, 'login']);
+
 
 Route::group([
     'middleware' => ['auth:sanctum', 'is_superadmin']
@@ -31,6 +34,8 @@ Route::group([
     Route::put('/users/activate/{id}', [SuperAdminController::class, 'activate']);
     Route::put('/users/role/{id}', [SuperAdminController::class, 'changeRole']);
     Route::get('/allUsers', [SuperAdminController::class, 'getAllUsers']);
+    Route::post('/guilds/register', [GuildsController::class, 'guildRegister']);
+
 });
 
 Route::group([
@@ -45,5 +50,7 @@ Route::group([
     Route::post('/stores/register', [StoresController::class, 'storeRegister']);
     Route::get('/stores/profile', [StoresController::class, 'storeProfile']);
     Route::put('/stores/update', [StoresController::class, 'storeUpdate']);
+    Route::post('/product/register', [ProductController::class, 'productRegister']);
+
     
 });
