@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Guild;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Error;
@@ -59,6 +60,31 @@ class SuperAdminController extends Controller
                 [
                     "success" => false,
                     "message" => "Error getting all users"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
+
+    public function getAllGuilds(Request $request)
+    {
+        try {
+            $guilds = Guild::query()->get();
+            return response()->json(
+                [
+                    "success" => true,
+                    "message" => "Get all guilds successfully",
+                    "data" => $guilds
+                ],
+                Response::HTTP_OK
+            );
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error getting all guilds"
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );
