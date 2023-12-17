@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Image_product extends Model
 {
     use HasFactory;
+
+    protected $table = "image_product";
+    
     protected $fillable = [
         'name_product',
         'variety',
