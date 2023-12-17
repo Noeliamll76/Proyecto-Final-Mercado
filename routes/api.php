@@ -5,6 +5,7 @@ use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\GuildsController;
+use App\Http\Controllers\CategoriesController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -38,6 +39,7 @@ Route::group([
     Route::post('/guilds/register', [GuildsController::class, 'guildRegister']);
     Route::put('/guilds/update/{id}', [GuildsController::class, 'guildUpdate']);
     Route::delete('/guilds/delete/{id}', [GuildsController::class, 'guildDelete']);
+    Route::post('/categories/register', [CategoriesController::class, 'categoryRegister']);
 
 });
 
