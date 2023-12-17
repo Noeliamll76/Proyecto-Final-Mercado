@@ -8,6 +8,7 @@ use App\Http\Controllers\GuildsController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\Image_productController;
 use App\Models\Image_product;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -67,6 +68,7 @@ Route::group([
     Route::put('/stores/update', [StoresController::class, 'storeUpdate']);
 
     Route::post('/product/register', [ProductController::class, 'productRegister']);
+    Route::get('/product/profile/{id}', [ProductController::class, 'productProfile']);
 
     Route::get('/allGuilds', [GuildsController::class, 'getAllGuilds']);
 

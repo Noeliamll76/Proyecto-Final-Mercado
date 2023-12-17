@@ -68,15 +68,17 @@ class ProductController extends Controller
             if ($imageProduct) {
                 $image_id = $imageProduct->id;
             } else {
-                $image_id = "0";
-            }
-            
+                $image_id = "1";
+            } // El campo 1 se reserva para los productos sin imagen
+
             if (!$category = Category::query()->find($category_id)) {
-                throw new Error('Incorrect category');}
+                throw new Error('Incorrect category');
+            }
 
             if ($category->guild_id !== $store->guild_id) {
-                throw new Error('Incorrect category');  }
-        
+                throw new Error('Incorrect category');
+            }
+
             $newProduct = Product::create(
                 [
                     "category_id" => $category_id,
@@ -112,6 +114,46 @@ class ProductController extends Controller
                     "success" => false,
                     "message" => "Error registering product",
 
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
+
+    public function productProfile(Request $request, $id)
+    {
+        try {
+            $email = auth()->user()->email;
+            $store = Store::query()->where('email', $email)->first();
+            
+            $product = Product::query()->where('id', $id)->first();
+          
+            if ($product->store_id !== $store->id) {
+                throw new Error('Incorrect');
+            }
+            return response()->json(
+                [
+                    "success" => true,
+                    "message" => "Get product successfully",
+                    "data" => $product
+                ],
+                Response::HTTP_OK
+            );
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+            if ($th->getMessage() === 'Incorrect') {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "This product does not belong to you"
+                    ],
+                    Response::HTTP_NOT_FOUND
+                );
+            }
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error getting product"
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );
