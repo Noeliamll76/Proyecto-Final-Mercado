@@ -19,7 +19,7 @@ class Product extends Model
         'variety',
         'origin',
         'price',
-        'image',
+        'image_id',
     ];
 
     public function store(): BelongsTo

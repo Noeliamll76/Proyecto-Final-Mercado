@@ -60,33 +60,23 @@ class ProductController extends Controller
             $variety = $request->input('variety');
             $origin = $request->input('origin');
             $price = $request->input('price');
-$image="no hay imagen";
-            // $imageProduct = Image_product::query()
-            //     ->where("name_product", $name)
-            //     ->where("variety", $variety)
-            //     ->firstOrFail();
-            // if (!$imageProduct) {
-            //     return response()->json(
-            //         [
-            //             "success" => false,
-            //             "message" => "No existe imagen para este producto",
-            //         ],
-            //         Response::HTTP_NOT_FOUND
-            //     );
-            // }
-            // $image = $imageProduct->image;
 
-
-            if (!$category = Category::query()->find($category_id)) {
-                return response()->json(
-                    [
-                        "success" => false,
-                        "message" => "No existe esta categoria",
-                    ],
-                    Response::HTTP_I_AM_A_TEAPOT
-                );
+            $imageProduct = Image_product::query()
+                ->where("name_product", $name)
+                ->where("variety", $variety)
+                ->first();
+            if ($imageProduct) {
+                $image_id = $imageProduct->id;
+            } else {
+                $image_id = "0";
             }
+            
+            if (!$category = Category::query()->find($category_id)) {
+                throw new Error('Incorrect category');}
 
+            if ($category->guild_id !== $store->guild_id) {
+                throw new Error('Incorrect category');  }
+        
             $newProduct = Product::create(
                 [
                     "category_id" => $category_id,
@@ -95,7 +85,7 @@ $image="no hay imagen";
                     "variety" => $variety,
                     "origin" => $origin,
                     "price" => $price,
-                    "image" => $image,
+                    "image_id" => $image_id
                 ]
             );
             return response()->json(
@@ -108,11 +98,20 @@ $image="no hay imagen";
             );
         } catch (\Throwable $th) {
             Log::error($th->getMessage());
+            if ($th->getMessage() === 'Incorrect category') {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "Incorrect category"
+                    ],
+                    Response::HTTP_NOT_FOUND
+                );
+            }
             return response()->json(
                 [
                     "success" => false,
                     "message" => "Error registering product",
-                  
+
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );
