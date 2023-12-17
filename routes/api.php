@@ -47,6 +47,7 @@ Route::group([
     
     Route::post('/image_product/register', [Image_productController::class, 'image_productRegister']);
     Route::put('/image_product/update/{id}', [Image_productController::class, 'image_productUpdate']);
+    Route::delete('/image_product/delete/{id}', [Image_productController::class, 'image_productDelete']);
 
 
 });

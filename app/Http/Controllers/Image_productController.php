@@ -138,43 +138,47 @@ class Image_productController extends Controller
         }
     }
 
-    // public function categoryDelete(Request $request, $id)
-    // {
-    //     try {
-    //         $category = Category::query()->find($id);
+    public function image_productDelete(Request $request, $id)
+    {
+        try {
+            if (!$image_product = Image_product::query()->find($id)) {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "This image doesn't exist",
+                    ],
+                    Response::HTTP_NOT_FOUND
+                );
+            }
 
-    //         if (!$category) {
-    //             throw new Error('invalid');
-    //         }
-
-    //         $category->delete();
-    //         return response()->json(
-    //             [
-    //                 "success" => true,
-    //                 "message" => "Category delete"
-    //             ],
-    //             Response::HTTP_OK
-    //         );
-    //     } catch (\Throwable $th) {
-    //         Log::error($th->getMessage());
-    //         if ($th->getMessage() === 'invalid') {
-    //             return response()->json(
-    //                 [
-    //                     "success" => false,
-    //                     "message" => "This category doesn't exist"
-    //                 ],
-    //                 Response::HTTP_NOT_FOUND
-    //             );
-    //         }
-    //         return response()->json(
-    //             [
-    //                 "success" => false,
-    //                 "message" => "Error delete category"
-    //             ],
-    //             Response::HTTP_INTERNAL_SERVER_ERROR
-    //         );
-    //     }
-    // }
+            $image_product->delete();
+            return response()->json(
+                [
+                    "success" => true,
+                    "message" => "Image_product delete"
+                ],
+                Response::HTTP_OK
+            );
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+            if ($th->getMessage() === 'invalid') {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "This image doesn't exist"
+                    ],
+                    Response::HTTP_NOT_FOUND
+                );
+            }
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error delete image_product"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
 
     // public function getCategoriesByGuild(Request $request, $id)
     // {
