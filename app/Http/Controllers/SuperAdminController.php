@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Guild;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Error;
@@ -20,7 +21,7 @@ class SuperAdminController extends Controller
         try {
             $user = User::query()->find($id);
             $user->is_active = true;
-           
+            
             $user->save();
             return response()->json(
                 [
@@ -35,6 +36,32 @@ class SuperAdminController extends Controller
                 [
                     "success" => false,
                     "message" => "Error activated user"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
+    
+    public function changeRole(Request $request, $id)
+    {
+        try {
+            $user = User::query()->find($id);
+            $user->roles = "admin";
+           
+            $user->save();
+            return response()->json(
+                [
+                    "success" => true,
+                    "message" => "User change to admin"
+                ],
+                Response::HTTP_OK
+            );
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error change user role"
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );
@@ -91,29 +118,29 @@ class SuperAdminController extends Controller
         }
     }
 
-    public function changeRole(Request $request, $id)
+    public function getAllCategories(Request $request)
     {
         try {
-            $user = User::query()->find($id);
-            $user->roles = "admin";
-           
-            $user->save();
+            $categories = Category::query()->get();
             return response()->json(
                 [
                     "success" => true,
-                    "message" => "User change to admin"
+                    "message" => "Get all categories successfully",
+                    "data" => $categories
                 ],
                 Response::HTTP_OK
             );
         } catch (\Throwable $th) {
             Log::error($th->getMessage());
+
             return response()->json(
                 [
                     "success" => false,
-                    "message" => "Error change user role"
+                    "message" => "Error getting all categories"
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );
         }
     }
+
 }

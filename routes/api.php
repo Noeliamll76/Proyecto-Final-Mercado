@@ -36,6 +36,7 @@ Route::group([
     Route::put('/users/role/{id}', [SuperAdminController::class, 'changeRole']);
     Route::get('/allUsers', [SuperAdminController::class, 'getAllUsers']);
     Route::get('/allGuilds', [SuperAdminController::class, 'getAllGuilds']);
+    Route::get('/allCategories', [SuperAdminController::class, 'getAllCategories']);
     Route::post('/guilds/register', [GuildsController::class, 'guildRegister']);
     Route::put('/guilds/update/{id}', [GuildsController::class, 'guildUpdate']);
     Route::delete('/guilds/delete/{id}', [GuildsController::class, 'guildDelete']);
