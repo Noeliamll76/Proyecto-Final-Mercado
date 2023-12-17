@@ -76,24 +76,52 @@ class CategoriesController extends Controller
         }
     }
 
-    public function guildUpdate(Request $request, $id)
+    public function categoryUpdate(Request $request, $id)
     {
         try {
-            $guild = Guild::query()->find($id);
-            $name = $request->input('name');
+            if (!$category = Category::query()->find($id)) {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "Category doesn't exist",
+                    ],
+                    Response::HTTP_NOT_FOUND
+                );
+            }
 
-            if ($request->has('name')) {
-                if (strlen($name) > 3 && strlen($name) < 100) {
-                    $guild->name = $name;
+            $guild_id = $request->input('guild_id');
+            $description = $request->input('description');
+            $image = $request->input('image');
+
+            if ($request->has('guild_id')) {
+                if (!$guild = Guild::query()->find($guild_id)) {
+                    return response()->json(
+                        [
+                            "success" => false,
+                            "message" => "No existe este guild",
+                        ],
+                        Response::HTTP_NOT_FOUND
+                    );
+                }
+                $category->guild_id = $guild_id;
+            }
+            if ($request->has('description')) {
+                if (strlen($description) > 3 && strlen($description) < 101) {
+                    $category->description = $description;
                 } else {
                     throw new Error('invalid');
                 }
             }
-            $guild->save();
+            if ($request->has('image')) {
+                $category->image = $image;
+            }
+
+            $category->save();
             return response()->json(
                 [
                     "success" => true,
-                    "message" => "Guild update"
+                    "message" => "Category update",
+                    "data"=> $category
                 ],
                 Response::HTTP_OK
             );
@@ -111,7 +139,7 @@ class CategoriesController extends Controller
             return response()->json(
                 [
                     "success" => false,
-                    "message" => "Error update guild"
+                    "message" => "Error update category"
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );
