@@ -73,5 +73,6 @@ Route::group([
     Route::get('/allCategories', [CategoriesController::class, 'getAllCategories']);
     Route::get('/categories/profileByGuild/{id}', [CategoriesController::class, 'getCategoriesByGuild']);
     
+    Route::get('/allImage_product', [Image_productController::class, 'getAllImage_product']);
     
 });
