@@ -46,7 +46,9 @@ Route::group([
     Route::delete('/categories/delete/{id}', [CategoriesController::class, 'categoryDelete']);
     
     Route::post('/image_product/register', [Image_productController::class, 'image_productRegister']);
-    
+    Route::put('/image_product/update/{id}', [Image_productController::class, 'image_productUpdate']);
+
+
 });
 
 Route::group([
