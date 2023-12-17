@@ -183,4 +183,57 @@ class CategoriesController extends Controller
             );
         }
     }
+
+    public function getCategoriesByGuild(Request $request, $id)
+    {
+        try {
+            $categories = Category::query()->where('guild_id', $id)->get();
+           
+
+            return response()->json(
+                [
+                    "success" => true,
+                    "message" => "Get categories successfully",
+                    "data" => $categories
+                ],
+                Response::HTTP_OK
+            );
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error getting categories"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
+
+    public function getAllCategories(Request $request)
+    {
+        try {
+            $categories = Category::query()->get();
+            return response()->json(
+                [
+                    "success" => true,
+                    "message" => "Get all categories successfully",
+                    "data" => $categories
+                ],
+                Response::HTTP_OK
+            );
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error getting all categories"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
+
 }
