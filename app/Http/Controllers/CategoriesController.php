@@ -146,20 +146,20 @@ class CategoriesController extends Controller
         }
     }
 
-    public function guildDelete(Request $request, $id)
+    public function categoryDelete(Request $request, $id)
     {
         try {
-            $guild = Guild::query()->find($id);
+            $category = Category::query()->find($id);
 
-            if (!$guild) {
+            if (!$category) {
                 throw new Error('invalid');
             }
 
-            $guild->delete();
+            $category->delete();
             return response()->json(
                 [
                     "success" => true,
-                    "message" => "Guild delete"
+                    "message" => "Category delete"
                 ],
                 Response::HTTP_OK
             );
@@ -169,7 +169,7 @@ class CategoriesController extends Controller
                 return response()->json(
                     [
                         "success" => false,
-                        "message" => "This guild doesn't exist"
+                        "message" => "This category doesn't exist"
                     ],
                     Response::HTTP_NOT_FOUND
                 );
@@ -177,7 +177,7 @@ class CategoriesController extends Controller
             return response()->json(
                 [
                     "success" => false,
-                    "message" => "Error delete guild"
+                    "message" => "Error delete category"
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );

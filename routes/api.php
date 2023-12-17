@@ -42,6 +42,7 @@ Route::group([
     Route::delete('/guilds/delete/{id}', [GuildsController::class, 'guildDelete']);
     Route::post('/categories/register', [CategoriesController::class, 'categoryRegister']);
     Route::put('/categories/update/{id}', [CategoriesController::class, 'categoryUpdate']);
+    Route::delete('/categories/delete/{id}', [CategoriesController::class, 'categoryDelete']);
 
 
 });
