@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\GuildsController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\Image_productController;
+use App\Http\Controllers\OrdersController;
 use App\Models\Image_product;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -79,4 +80,6 @@ Route::group([
     
     Route::get('/allImage_product', [Image_productController::class, 'getAllImage_product']);
     
+    Route::post('/order/register', [OrdersController::class, 'orderRegister']);
+
 });
