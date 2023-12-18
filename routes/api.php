@@ -69,6 +69,7 @@ Route::group([
 
     Route::post('/product/register', [ProductController::class, 'productRegister']);
     Route::get('/product/profile/{id}', [ProductController::class, 'productProfile']);
+    Route::get('/product/allProductsByStore/{id}', [ProductController::class, 'allProductsByStore']);
 
     Route::get('/allGuilds', [GuildsController::class, 'getAllGuilds']);
 
