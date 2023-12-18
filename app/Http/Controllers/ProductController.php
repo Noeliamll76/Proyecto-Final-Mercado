@@ -200,4 +200,48 @@ class ProductController extends Controller
             );
         }
     }
+
+    public function productDelete(Request $request, $id)
+    {
+        try {
+            $email = auth()->user()->email;
+            $store = Store::query()->where('email', $email)->first();
+            $product = Product::query()->find($id);
+
+            if (!$product) {
+                throw new Error('Invalid');
+            };
+
+            if (!$store || $store->id != $product->store_id) {
+                throw new Error('Invalid');
+            };
+
+            $product->delete();
+            return response()->json(
+                [
+                    "success" => true,
+                    "message" => "Product delete"
+                ],
+                Response::HTTP_OK
+            );
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+            if ($th->getMessage() === 'invalid') {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "Incorrect date"
+                    ],
+                    Response::HTTP_NOT_FOUND
+                );
+            }
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error delete category"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
 }

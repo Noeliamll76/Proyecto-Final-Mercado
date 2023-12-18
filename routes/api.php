@@ -70,6 +70,7 @@ Route::group([
     Route::post('/product/register', [ProductController::class, 'productRegister']);
     Route::get('/product/profile/{id}', [ProductController::class, 'productProfile']);
     Route::get('/product/allProductsByStore/{id}', [ProductController::class, 'allProductsByStore']);
+    Route::delete('/product/delete/{id}', [ProductController::class, 'productDelete']);
 
     Route::get('/allGuilds', [GuildsController::class, 'getAllGuilds']);
 
