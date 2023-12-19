@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('orders', function (Blueprint $table) {
-           $table->boolean('invoiced');
-           $table->text('comment',500);
+        $table->text('comment', 500)->after('invoiced');
         });
     }
 
@@ -23,8 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->dropColumn('invoiced');
-            $table->dropColumn('comment',500);
-        });
+            $table->dropColumn('comment', 500)->after('invoiced');
+            });
     }
 };

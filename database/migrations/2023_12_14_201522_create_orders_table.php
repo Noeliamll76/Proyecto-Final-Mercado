@@ -17,6 +17,7 @@ return new class extends Migration
             $table->float('ud',4);
             $table->float('price',5);
             $table->float('import',6);
+           
             $table->timestamps();
         });
     }
