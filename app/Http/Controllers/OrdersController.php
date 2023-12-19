@@ -181,4 +181,46 @@ class OrdersController extends Controller
             );
         }
     }
+
+    public function ordersBasket(Request $request, $id)
+    {
+        try {
+            $email = auth()->user()->email;
+            $store = Store::query()->where('email', $email)->first();
+
+            if (!$store || $store->id != $id) {
+                throw new Error('Incorrect');
+            };
+
+            $product = Product::query()->where('store_id', $id)->get();
+
+            return response()->json(
+                [
+                    "success" => true,
+                    "message" => "Get products successfully",
+                    "data" => $product
+                ],
+                Response::HTTP_OK
+            );
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+            if ($th->getMessage() === 'Incorrect') {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "Store incorrect"
+                    ],
+                    Response::HTTP_NOT_FOUND
+                );
+            }
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error getting products"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
+
 }
