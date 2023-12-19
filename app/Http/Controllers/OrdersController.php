@@ -202,33 +202,32 @@ class OrdersController extends Controller
         }
     }
 
-    public function ordersBasket(Request $request, $id)
+    public function ordersBasket(Request $request)
     {
         try {
-            $email = auth()->user()->email;
-            $store = Store::query()->where('email', $email)->first();
+            $user_id = auth()->user()->id;
 
-            if (!$store || $store->id != $id) {
-                throw new Error('Incorrect');
-            };
-
-            $product = Product::query()->where('store_id', $id)->get();
-
+            if (!$order = Order::query()
+                ->where('user_id', $user_id)
+                ->where('invoiced', false)
+                ->get()) {
+                throw new Error('Invalid');
+            }
             return response()->json(
                 [
                     "success" => true,
                     "message" => "Get products successfully",
-                    "data" => $product
+                    "data" => $order
                 ],
                 Response::HTTP_OK
             );
         } catch (\Throwable $th) {
             Log::error($th->getMessage());
-            if ($th->getMessage() === 'Incorrect') {
+            if ($th->getMessage() === 'Invalid') {
                 return response()->json(
                     [
                         "success" => false,
-                        "message" => "Store incorrect"
+                        "message" => "No tiene nada en la cesta"
                     ],
                     Response::HTTP_NOT_FOUND
                 );
@@ -236,7 +235,7 @@ class OrdersController extends Controller
             return response()->json(
                 [
                     "success" => false,
-                    "message" => "Error getting products"
+                    "message" => "Error getting orders"
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );
