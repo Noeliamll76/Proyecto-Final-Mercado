@@ -46,7 +46,14 @@ class OrdersController extends Controller
             $ud = $request->input('ud');
             $price = $product->price;
             $import = ($ud * $price);
-
+            $comment = $request->input('comment');
+            if ($request->has('comment')) {
+                if (strlen($comment)>500) {
+                    throw new Error('Invalid');
+                }
+            }else{
+                $comment = " ";
+            }
             $newOrder = Order::create(
                 [
                     "user_id" => $user_id,
@@ -54,6 +61,7 @@ class OrdersController extends Controller
                     "ud" => $ud,
                     "price" => $price,
                     "import" => $import,
+                    "comment" => $comment,
                 ]
             );
             return response()->json(

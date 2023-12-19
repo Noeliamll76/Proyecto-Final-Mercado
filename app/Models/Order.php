@@ -17,6 +17,7 @@ class Order extends Model
         'ud',
         'price',
         'import',
+        'comment',
     ];
 
     public function user(): BelongsTo
