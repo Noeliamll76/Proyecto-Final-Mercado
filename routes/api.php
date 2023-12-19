@@ -81,5 +81,6 @@ Route::group([
     Route::get('/allImage_product', [Image_productController::class, 'getAllImage_product']);
     
     Route::post('/order/register', [OrdersController::class, 'orderRegister']);
+    Route::put('/order/update/{id}', [OrdersController::class, 'orderUpdate']);
 
 });

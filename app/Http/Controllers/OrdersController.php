@@ -38,13 +38,15 @@ class OrdersController extends Controller
 
             $user_id = auth()->user()->id;
             $product_id = $request->input('product_id');
+
             if (!$product = Product::query()->find($product_id)) {
                 throw new Error('Invalid');
             }
+
             $ud = $request->input('ud');
             $price = $product->price;
-            $import = ($ud*$price);
-           
+            $import = ($ud * $price);
+
             $newOrder = Order::create(
                 [
                     "user_id" => $user_id,
@@ -82,6 +84,55 @@ class OrdersController extends Controller
                 [
                     "success" => false,
                     "message" => "Error registering order",
+
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
+
+    public function orderUpdate(Request $request, $id)
+    {
+        try {
+            $user_id = auth()->user()->id;
+
+            if (!$order = Order::query()
+                ->where('id', $id)
+                ->where('user_id', $user_id)
+                ->first()) {
+                throw new Error('Invalid');
+            }
+            $ud = $request->input('ud');
+            $import = ($ud * $order->price);
+
+            $order->ud = $ud;
+            $order->import = $import;
+
+            $order->save();
+
+            return response()->json(
+                [
+                    "success" => true,
+                    "message" => "Order updated",
+                    "data" => $order
+                ],
+                Response::HTTP_CREATED
+            );
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+            if ($th->getMessage() === 'Invalid') {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "Incorrect order"
+                    ],
+                    Response::HTTP_NOT_FOUND
+                );
+            }
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error updating order",
 
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
