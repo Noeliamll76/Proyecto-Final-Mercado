@@ -82,5 +82,6 @@ Route::group([
     
     Route::post('/order/register', [OrdersController::class, 'orderRegister']);
     Route::put('/order/update/{id}', [OrdersController::class, 'orderUpdate']);
+    Route::delete('/order/delete/{id}', [OrdersController::class, 'orderDelete']);
 
 });

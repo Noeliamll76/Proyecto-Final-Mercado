@@ -139,4 +139,46 @@ class OrdersController extends Controller
             );
         }
     }
+
+    public function orderDelete(Request $request, $id)
+    {
+        try {
+            $user_id = auth()->user()->id;
+
+            if (!$order = Order::query()
+                ->where('id', $id)
+                ->where('user_id', $user_id)
+                ->first()) {
+                throw new Error('Invalid');
+            }
+            
+            $order->delete();
+            return response()->json(
+                [
+                    "success" => true,
+                    "message" => "Order delete"
+                ],
+                Response::HTTP_OK
+            );
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+            if ($th->getMessage() === 'Invalid') {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "Incorrect order"
+                    ],
+                    Response::HTTP_NOT_FOUND
+                );
+            }
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error deleted order",
+
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
 }
