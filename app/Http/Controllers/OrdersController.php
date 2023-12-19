@@ -83,7 +83,7 @@ class OrdersController extends Controller
                 return response()->json(
                     [
                         "success" => false,
-                        "message" => "Incorrect product"
+                        "message" => "Incorrect order"
                     ],
                     Response::HTTP_NOT_FOUND
                 );
@@ -111,11 +111,23 @@ class OrdersController extends Controller
                 throw new Error('Invalid');
             }
             $ud = $request->input('ud');
-            $import = ($ud * $order->price);
+            $comment = $request->input('comment');
 
-            $order->ud = $ud;
-            $order->import = $import;
-
+            if ($request->has('ud')) {
+                if (strlen($ud)>4) {
+                    throw new Error('Invalid');
+                }
+                $order->ud = $ud;
+                $import = ($ud * $order->price);
+                $order->import = $import;
+            }
+            if ($request->has('comment')) {
+                if (strlen($comment)>500) {
+                    throw new Error('Invalid');
+                }
+                $order->comment = $comment;
+            }
+     
             $order->save();
 
             return response()->json(
