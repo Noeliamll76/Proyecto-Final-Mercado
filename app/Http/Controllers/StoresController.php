@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Http\Controllers;
@@ -14,7 +15,7 @@ use illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\PersonalAccessToken;
-
+use Ramsey\Uuid\Guid\Guid;
 
 class StoresController extends Controller
 {
@@ -252,6 +253,55 @@ class StoresController extends Controller
                 [
                     "success" => false,
                     "message" => "Error updating store"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
+
+    public function allStoresByGuild(Request $request, $id)
+    {
+        try {
+            if (!$guild = Guild::query()->where('id', $id)->first()) {
+                throw new Error('Incorrect');
+            };
+
+            if (!$stores = Store::query()->where('guild_id', $id)->get()) {
+                throw new Error('Incorrect 2');
+            };
+            
+            return response()->json(
+                [
+                    "success" => true,
+                    "message" => "Get stores successfully",
+                    "data" => $stores
+                ],
+                Response::HTTP_OK
+            );
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+            if ($th->getMessage() === 'Incorrect') {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "Guild incorrect"
+                    ],
+                    Response::HTTP_NOT_FOUND
+                );
+            }
+            if ($th->getMessage() === 'Incorrect 2') {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "There are no store in this guild"
+                    ],
+                    Response::HTTP_NOT_FOUND
+                );
+            }
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error getting stores"
                 ],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );

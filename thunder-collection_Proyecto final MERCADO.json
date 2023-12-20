@@ -1,0 +1,693 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Proyecto final MERCADO",
+    "dateExported": "2023-12-20T12:07:26.360Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "8e99d1ba-c6b7-42dc-b041-61598df1000a",
+            "colId": "b0bc395f-6d84-4664-a5a9-4e4b8375c088",
+            "containerId": "",
+            "name": "User register",
+            "url": "localhost:8000/api/register",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-12-10T17:11:30.460Z",
+            "modified": "2023-12-12T10:20:38.626Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\":\"Rosita Amores\",\n  \"address\":\"Calle Maderas, 82\",\n  \"zip_code\":\"46022\",\n  \"town\":\"Valencia\",\n  \"phone\":\"600777999\",\n  \"DNI\":\"44555555M\",\n  \"birthdate\":\"2000/11/20\",\n  \"email\":\"rositamores@rosita.com\",\n  \"password\":\"password\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "a6777843-5671-4a69-b35d-4833f4d468cd",
+            "colId": "b0bc395f-6d84-4664-a5a9-4e4b8375c088",
+            "containerId": "",
+            "name": "User login",
+            "url": "localhost:8000/api/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-12-10T17:13:52.188Z",
+            "modified": "2023-12-20T10:39:37.903Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\":\"loli@loli.com\",\n  \"password\":\"password\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "efaf27e1-70d9-4b2e-8ba8-96852e0d062b",
+            "colId": "b0bc395f-6d84-4664-a5a9-4e4b8375c088",
+            "containerId": "",
+            "name": "User profile",
+            "url": "localhost:8000/api/users/profile",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-12-10T17:30:43.840Z",
+            "modified": "2023-12-17T20:11:55.958Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "8|eZ2nAg4hQSo65WPSOoExNVrC3AtpUEnIqcp3mz7e54ecb44b"
+            },
+            "tests": []
+        },
+        {
+            "_id": "50b8bb27-f5b6-49ea-b432-f111e2c7d4f5",
+            "colId": "b0bc395f-6d84-4664-a5a9-4e4b8375c088",
+            "containerId": "",
+            "name": "Users update",
+            "url": "localhost:8000/api/users/update",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2023-12-10T17:34:50.374Z",
+            "modified": "2023-12-15T21:42:27.862Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\":\"Noelia Marcos\",\n  \"address\":\"C/ Jose Ballester, 13\",\n  \"email\":\"noelia@noelia.com\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "1|NvtgGs6rlR65ZDRL8MECFmqFCIxqPt8XrhyiYbdq985397bf"
+            },
+            "tests": []
+        },
+        {
+            "_id": "fd76ca12-24d9-4578-b6d3-ba8cffea2f87",
+            "colId": "b0bc395f-6d84-4664-a5a9-4e4b8375c088",
+            "containerId": "",
+            "name": "Change password",
+            "url": "localhost:8000/api/users/password",
+            "method": "PUT",
+            "sortNum": 50000,
+            "created": "2023-12-10T17:40:44.879Z",
+            "modified": "2023-12-15T21:45:43.458Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"password\":\"password\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "3|E947YFUk6ez6ICRCwgf934TVDpmcC7uWXLD1LtAvd7d5fa44"
+            },
+            "tests": []
+        },
+        {
+            "_id": "659404a2-6251-42cf-9283-4504fb8239c9",
+            "colId": "b0bc395f-6d84-4664-a5a9-4e4b8375c088",
+            "containerId": "",
+            "name": "Users logout",
+            "url": "localhost:8000/api/users/logout",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2023-12-10T17:46:22.419Z",
+            "modified": "2023-12-10T17:46:22.419Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "9|nDAuFG06TB5GATcsioy4uao1y6NvNEdxkmAUTWjv5549d05f"
+            },
+            "tests": []
+        },
+        {
+            "_id": "83659c8e-5126-418c-8607-ee06c945a86f",
+            "colId": "b0bc395f-6d84-4664-a5a9-4e4b8375c088",
+            "containerId": "",
+            "name": "User inactivate",
+            "url": "localhost:8000/api/users/inactivate",
+            "method": "PUT",
+            "sortNum": 70000,
+            "created": "2023-12-10T17:48:17.950Z",
+            "modified": "2023-12-15T22:02:47.241Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "2|YPwtmG6Ioi3de3XRXoZ3PqZg89YQunfIJI8VH5M96c0b7e8a"
+            },
+            "tests": []
+        },
+        {
+            "_id": "71f97b11-38a1-4bc2-afc0-9f2cf33db44f",
+            "colId": "b0bc395f-6d84-4664-a5a9-4e4b8375c088",
+            "containerId": "",
+            "name": "Super Admin user activate",
+            "url": "localhost:8000/api/users/activate/3",
+            "method": "PUT",
+            "sortNum": 80000,
+            "created": "2023-12-10T18:23:57.689Z",
+            "modified": "2023-12-16T22:44:01.035Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "2|GUxl7i0Pd5ziKJicwvQ4VWwnMpn5sjeXqZoY7Lmn5416a39b\""
+            },
+            "tests": []
+        },
+        {
+            "_id": "93bb0de1-c83b-429e-89df-889f60d22bea",
+            "colId": "b0bc395f-6d84-4664-a5a9-4e4b8375c088",
+            "containerId": "",
+            "name": "Super Admin get allUsers",
+            "url": "localhost:8000/api/allUsers",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2023-12-10T18:27:33.802Z",
+            "modified": "2023-12-16T22:46:39.201Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "3|AER4jJ5KqGDtFUJIEudIr9MhfLpHP8HQML6Le4Igb634aa4f"
+            },
+            "tests": []
+        },
+        {
+            "_id": "70e37f29-69dc-4a56-9c16-af47fb9179db",
+            "colId": "b0bc395f-6d84-4664-a5a9-4e4b8375c088",
+            "containerId": "",
+            "name": "Super Admin change role",
+            "url": "localhost:8000/api/users/role/3",
+            "method": "PUT",
+            "sortNum": 100000,
+            "created": "2023-12-10T18:40:20.849Z",
+            "modified": "2023-12-16T22:48:00.288Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "3|AER4jJ5KqGDtFUJIEudIr9MhfLpHP8HQML6Le4Igb634aa4f"
+            },
+            "tests": []
+        },
+        {
+            "_id": "f846a0c5-3f27-4ff0-a8a7-7e10a0bf06d4",
+            "colId": "b0bc395f-6d84-4664-a5a9-4e4b8375c088",
+            "containerId": "",
+            "name": "Store register",
+            "url": "localhost:8000/api/stores/register",
+            "method": "POST",
+            "sortNum": 110000,
+            "created": "2023-12-15T09:24:53.662Z",
+            "modified": "2023-12-18T19:14:45.491Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\":\"Pescados y mariscos Loli\",\n  \"owner\":\"Loli Panoli\",\n  \"location\":\"Nave 3 palco 14-15\",\n  \"guild_id\":\"8\",\n  \"image\":\"https://tse3.mm.bing.net/th?id=OIP.qNc322sGXXkDHVzmZBrjhgHaEv&pid=Api&P=0&h=180\",\n  \"description\":\"Pescados y mariscos frescos directo de la lonja de Valencia\"\n  \n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "11|R3b7lLGJQbInXlgs3uG9enbvDD15G57RoUW8vHQm30328eb1"
+            },
+            "tests": []
+        },
+        {
+            "_id": "e3418b31-2918-48c7-8f34-4685ec9b6c60",
+            "colId": "b0bc395f-6d84-4664-a5a9-4e4b8375c088",
+            "containerId": "",
+            "name": "Store profile",
+            "url": "localhost:8000/api/stores/profile",
+            "method": "GET",
+            "sortNum": 120000,
+            "created": "2023-12-15T20:35:50.673Z",
+            "modified": "2023-12-17T20:12:21.302Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "8|eZ2nAg4hQSo65WPSOoExNVrC3AtpUEnIqcp3mz7e54ecb44b"
+            },
+            "tests": []
+        },
+        {
+            "_id": "8a5c635a-3df5-4c26-a237-4d7b98458bcd",
+            "colId": "b0bc395f-6d84-4664-a5a9-4e4b8375c088",
+            "containerId": "",
+            "name": "Store update",
+            "url": "localhost:8000/api/stores/update",
+            "method": "PUT",
+            "sortNum": 130000,
+            "created": "2023-12-15T23:00:45.192Z",
+            "modified": "2023-12-15T23:00:45.192Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\":\"Tienda de Noe\",\n  \"owner\":\"Noelia Marcos\",\n  \"location\":\"Soportales exteriores\",\n  \"is_active\":true,\n  \"image\":\"https://tse3.mm.bing.net/th?id=OIP.LnHX1MGwvBZlA0mnJ5Dt3gHaEK&pid=Api&P=0&h=180\",\n  \"description\":\"Tienda de moda\"\n  \n  \n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "11|ajseRAJyBMXLj9VR4f2iNnw7KKdmMJRr2TZ8InTG8f3d9f0e"
+            },
+            "tests": []
+        },
+        {
+            "_id": "6b5a003b-3c4c-4dde-a04f-93e0a07daa65",
+            "colId": "b0bc395f-6d84-4664-a5a9-4e4b8375c088",
+            "containerId": "",
+            "name": "Guilds register",
+            "url": "localhost:8000/api/guilds/register",
+            "method": "POST",
+            "sortNum": 140000,
+            "created": "2023-12-16T23:06:24.849Z",
+            "modified": "2023-12-17T00:05:34.421Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\":\"Floristería\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "3|AER4jJ5KqGDtFUJIEudIr9MhfLpHP8HQML6Le4Igb634aa4f"
+            },
+            "tests": []
+        },
+        {
+            "_id": "0566d85b-804a-428c-af61-886ed73dd221",
+            "colId": "b0bc395f-6d84-4664-a5a9-4e4b8375c088",
+            "containerId": "",
+            "name": "Guilds update/10",
+            "url": "localhost:8000/api/guilds/update/10",
+            "method": "PUT",
+            "sortNum": 150000,
+            "created": "2023-12-16T23:25:05.996Z",
+            "modified": "2023-12-16T23:25:05.996Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\":\"Pijamas y ropa interior\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "5|YvjlzV8wmra2dqbNASHQugjC6KihcUah4j39e57Cbdabe272"
+            },
+            "tests": []
+        },
+        {
+            "_id": "4885786a-3d4c-4024-ac53-8427c2ba9682",
+            "colId": "b0bc395f-6d84-4664-a5a9-4e4b8375c088",
+            "containerId": "",
+            "name": "allGuilds by superAdmin",
+            "url": "localhost:8000/api/allGuilds",
+            "method": "GET",
+            "sortNum": 160000,
+            "created": "2023-12-16T23:29:00.116Z",
+            "modified": "2023-12-16T23:29:00.116Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "5|YvjlzV8wmra2dqbNASHQugjC6KihcUah4j39e57Cbdabe272"
+            },
+            "tests": []
+        },
+        {
+            "_id": "03f49d5e-981f-4f35-93f2-3aeef6d674cf",
+            "colId": "b0bc395f-6d84-4664-a5a9-4e4b8375c088",
+            "containerId": "",
+            "name": "Guilds delete/5 by superAdmin",
+            "url": "localhost:8000/api/guilds/delete/5",
+            "method": "DELETE",
+            "sortNum": 170000,
+            "created": "2023-12-16T23:47:21.187Z",
+            "modified": "2023-12-16T23:47:21.187Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "5|YvjlzV8wmra2dqbNASHQugjC6KihcUah4j39e57Cbdabe272"
+            },
+            "tests": []
+        },
+        {
+            "_id": "375118be-e006-4c8e-ab94-3323fbc76f56",
+            "colId": "b0bc395f-6d84-4664-a5a9-4e4b8375c088",
+            "containerId": "",
+            "name": "categories/register by superAdmin",
+            "url": "localhost:8000/api/categories/register",
+            "method": "POST",
+            "sortNum": 180000,
+            "created": "2023-12-17T00:37:51.208Z",
+            "modified": "2023-12-18T19:17:32.971Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"guild_id\":\"8\",\n  \"description\":\"Pescados\",\n  \"image\":\"https://tse4.mm.bing.net/th?id=OIP.gSB_cvy1RpLRpUAzIWrp5AHaE7&pid=Api&P=0&h=180\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "3|AER4jJ5KqGDtFUJIEudIr9MhfLpHP8HQML6Le4Igb634aa4f"
+            },
+            "tests": []
+        },
+        {
+            "_id": "04097157-07aa-472a-b07d-e911fe1cfd9b",
+            "colId": "b0bc395f-6d84-4664-a5a9-4e4b8375c088",
+            "containerId": "",
+            "name": "allCategories by superAdmin",
+            "url": "localhost:8000/api/allCategories",
+            "method": "GET",
+            "sortNum": 190000,
+            "created": "2023-12-17T00:45:39.921Z",
+            "modified": "2023-12-17T00:45:39.921Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "3|AER4jJ5KqGDtFUJIEudIr9MhfLpHP8HQML6Le4Igb634aa4f"
+            },
+            "tests": []
+        },
+        {
+            "_id": "7e1dd0a3-e99c-4ff3-ad00-8007f7af8ad7",
+            "colId": "b0bc395f-6d84-4664-a5a9-4e4b8375c088",
+            "containerId": "",
+            "name": "categories/update/2 by superAdmin",
+            "url": "localhost:8000/api/categories/update/2",
+            "method": "PUT",
+            "sortNum": 200000,
+            "created": "2023-12-17T01:04:16.494Z",
+            "modified": "2023-12-17T01:04:16.494Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"description\":\"Verduras y hortalizas\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "3|AER4jJ5KqGDtFUJIEudIr9MhfLpHP8HQML6Le4Igb634aa4f"
+            },
+            "tests": []
+        },
+        {
+            "_id": "7be38366-674d-4f73-bdb8-244e19c91e48",
+            "colId": "b0bc395f-6d84-4664-a5a9-4e4b8375c088",
+            "containerId": "",
+            "name": "categories/profileByGuild/3",
+            "url": "localhost:8000/api/categories/profileByGuild/3",
+            "method": "GET",
+            "sortNum": 210000,
+            "created": "2023-12-17T11:46:49.373Z",
+            "modified": "2023-12-17T11:46:49.373Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "7|0g3uPxchPFAC8cqY8emz2xCBBGu0QkUU2DmIP2hd48ac8b49"
+            },
+            "tests": []
+        },
+        {
+            "_id": "19a86a2f-880e-487e-b1b1-28371d7c8513",
+            "colId": "b0bc395f-6d84-4664-a5a9-4e4b8375c088",
+            "containerId": "",
+            "name": "image_product/register by superAdmin",
+            "url": "localhost:8000/api/image_product/register",
+            "method": "POST",
+            "sortNum": 220000,
+            "created": "2023-12-17T17:28:25.200Z",
+            "modified": "2023-12-17T17:28:25.200Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name_product\":\"cebolla\",\n  \"variety\":\"terreno\",\n  \"image\":\"https://tse4.mm.bing.net/th?id=OIP.IML-DeGrsDeQsuwT9CZZPwHaFB&pid=Api&P=0&h=180\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "3|AER4jJ5KqGDtFUJIEudIr9MhfLpHP8HQML6Le4Igb634aa4f"
+            },
+            "tests": []
+        },
+        {
+            "_id": "0c3e0d67-4536-4d3e-97e8-279e1f76c2cf",
+            "colId": "b0bc395f-6d84-4664-a5a9-4e4b8375c088",
+            "containerId": "",
+            "name": "image_product/update/8 by superAdmin",
+            "url": "localhost:8000/api/image_product/update/8",
+            "method": "PUT",
+            "sortNum": 230000,
+            "created": "2023-12-17T17:53:24.002Z",
+            "modified": "2023-12-17T17:53:24.002Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"variety\":\"blanca o dulce\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "3|AER4jJ5KqGDtFUJIEudIr9MhfLpHP8HQML6Le4Igb634aa4f"
+            },
+            "tests": []
+        },
+        {
+            "_id": "036f030d-a430-45a1-ae5a-08c41d1e9979",
+            "colId": "b0bc395f-6d84-4664-a5a9-4e4b8375c088",
+            "containerId": "",
+            "name": "image_product/delete/5 by superAdmin",
+            "url": "localhost:8000/api/image_product/delete/5",
+            "method": "DELETE",
+            "sortNum": 240000,
+            "created": "2023-12-17T18:05:07.963Z",
+            "modified": "2023-12-17T18:05:07.963Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "5|YvjlzV8wmra2dqbNASHQugjC6KihcUah4j39e57Cbdabe272"
+            },
+            "tests": []
+        },
+        {
+            "_id": "f6fa2e0a-9486-4737-a631-68b375344c0e",
+            "colId": "b0bc395f-6d84-4664-a5a9-4e4b8375c088",
+            "containerId": "",
+            "name": "categories/delete/7 by superAdmin",
+            "url": "localhost:8000/api/categories/delete/7",
+            "method": "DELETE",
+            "sortNum": 250000,
+            "created": "2023-12-17T18:06:44.065Z",
+            "modified": "2023-12-17T18:06:44.066Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "3|AER4jJ5KqGDtFUJIEudIr9MhfLpHP8HQML6Le4Igb634aa4f"
+            },
+            "tests": []
+        },
+        {
+            "_id": "cfe06899-23e6-4c23-be5f-7569713d136a",
+            "colId": "b0bc395f-6d84-4664-a5a9-4e4b8375c088",
+            "containerId": "",
+            "name": "allImage_product",
+            "url": "localhost:8000/api/allImage_product",
+            "method": "GET",
+            "sortNum": 260000,
+            "created": "2023-12-17T18:14:18.417Z",
+            "modified": "2023-12-17T18:14:18.417Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "3|AER4jJ5KqGDtFUJIEudIr9MhfLpHP8HQML6Le4Igb634aa4f"
+            },
+            "tests": []
+        },
+        {
+            "_id": "2c9d7a84-e4b9-458a-a5ff-6f4de5be61b1",
+            "colId": "b0bc395f-6d84-4664-a5a9-4e4b8375c088",
+            "containerId": "",
+            "name": "product/register",
+            "url": "localhost:8000/api/product/register",
+            "method": "POST",
+            "sortNum": 280000,
+            "created": "2023-12-17T20:14:34.004Z",
+            "modified": "2023-12-18T19:19:40.181Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"category_id\":\"8\",\n  \"name\":\"salmon\",\n  \"variety\":\"noruego\",\n  \"origin\":\"Noruega\",\n  \"price\":\"20.90\"\n  \n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "11|R3b7lLGJQbInXlgs3uG9enbvDD15G57RoUW8vHQm30328eb1"
+            },
+            "tests": []
+        },
+        {
+            "_id": "180721c3-6f53-4eeb-aa34-4115c42d2ddb",
+            "colId": "b0bc395f-6d84-4664-a5a9-4e4b8375c088",
+            "containerId": "",
+            "name": "product/profile/2",
+            "url": "localhost:8000/api/product/profile/2",
+            "method": "GET",
+            "sortNum": 290000,
+            "created": "2023-12-17T22:29:16.052Z",
+            "modified": "2023-12-18T19:04:05.106Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "10|FkGT0Hvcu8rtTR5AxKghJeWrjTZzXcfrw78xrUmy54db6fd7"
+            },
+            "tests": []
+        },
+        {
+            "_id": "7be89a36-f585-40fa-a96e-d5c88d7fa89b",
+            "colId": "b0bc395f-6d84-4664-a5a9-4e4b8375c088",
+            "containerId": "",
+            "name": "allProductsByStore/1",
+            "url": "localhost:8000/api/product/allProductsByStore/2",
+            "method": "GET",
+            "sortNum": 300000,
+            "created": "2023-12-18T19:21:55.419Z",
+            "modified": "2023-12-18T19:21:55.419Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "11|R3b7lLGJQbInXlgs3uG9enbvDD15G57RoUW8vHQm30328eb1"
+            },
+            "tests": []
+        },
+        {
+            "_id": "7436b1c4-aab1-46a2-a794-c0990f68f677",
+            "colId": "b0bc395f-6d84-4664-a5a9-4e4b8375c088",
+            "containerId": "",
+            "name": "product/delete/7",
+            "url": "localhost:8000/api/product/delete/7",
+            "method": "DELETE",
+            "sortNum": 310000,
+            "created": "2023-12-18T20:11:52.893Z",
+            "modified": "2023-12-18T20:11:52.893Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "11|R3b7lLGJQbInXlgs3uG9enbvDD15G57RoUW8vHQm30328eb1"
+            },
+            "tests": []
+        },
+        {
+            "_id": "8538004f-09a3-46db-9ee0-70bc51799ffb",
+            "colId": "b0bc395f-6d84-4664-a5a9-4e4b8375c088",
+            "containerId": "",
+            "name": "order/register",
+            "url": "localhost:8000/api/order/register",
+            "method": "POST",
+            "sortNum": 320000,
+            "created": "2023-12-18T20:50:01.421Z",
+            "modified": "2023-12-19T20:09:55.547Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"product_id\":\"8\",\n  \"ud\":\"0.50\",\n  \"comment\":\"Cortado a filetes\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "13|ugj1LD9xPqUGrIgoET3mngVlNS7DGYbw2OLI2UO1d406d654"
+            },
+            "tests": []
+        },
+        {
+            "_id": "bcc80d58-bc9b-4654-8b52-78f0e5ed7302",
+            "colId": "b0bc395f-6d84-4664-a5a9-4e4b8375c088",
+            "containerId": "",
+            "name": "order/update/3",
+            "url": "localhost:8000/api/order/update/3",
+            "method": "PUT",
+            "sortNum": 330000,
+            "created": "2023-12-19T17:17:37.699Z",
+            "modified": "2023-12-19T20:20:13.968Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"ud\":\"3\",\n  \"comment\":\"Que sean grandes\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "14|KAllk6iWClYItlNQibfL2kCsiGuwNCIErfWofmai6cce5198"
+            },
+            "tests": []
+        },
+        {
+            "_id": "35cfd1cb-0a0f-45eb-9cbf-19810324f0d0",
+            "colId": "b0bc395f-6d84-4664-a5a9-4e4b8375c088",
+            "containerId": "",
+            "name": "order/delete/5",
+            "url": "localhost:8000/api/order/delete/5",
+            "method": "DELETE",
+            "sortNum": 340000,
+            "created": "2023-12-19T17:29:36.155Z",
+            "modified": "2023-12-19T17:29:36.155Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "14|KAllk6iWClYItlNQibfL2kCsiGuwNCIErfWofmai6cce5198"
+            },
+            "tests": []
+        },
+        {
+            "_id": "c6595156-7425-4a17-930f-aae6957fbc5f",
+            "colId": "b0bc395f-6d84-4664-a5a9-4e4b8375c088",
+            "containerId": "",
+            "name": "product/update/9",
+            "url": "localhost:8000/api/product/update/9",
+            "method": "PUT",
+            "sortNum": 350000,
+            "created": "2023-12-20T12:05:52.375Z",
+            "modified": "2023-12-20T12:05:52.375Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"category_id\":\"8\",\n  \"name\":\"salmonete\",\n  \"variety\":\"rojo\",\n  \"origin\":\"Castellon\",\n  \"price\":\"30.00\"\n \n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "15|4ihzZyYSPm4RJeYxyIARC1FAUbWfMjOhYA8bx0Kh116cdb6a"
+            },
+            "tests": []
+        }
+    ]
+}

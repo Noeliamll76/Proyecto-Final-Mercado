@@ -32,6 +32,9 @@ use Illuminate\Support\Facades\Route;
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
 
+Route::get('/allGuilds', [GuildsController::class, 'getAllGuilds']);
+Route::get('/allStoresByGuild/{id}', [StoresController::class, 'allStoresByGuild']);
+
 
 Route::group([
     'middleware' => ['auth:sanctum', 'is_superadmin']
@@ -75,7 +78,6 @@ Route::group([
     Route::delete('/product/delete/{id}', [ProductController::class, 'productDelete']);
     Route::put('/product/update/{id}', [ProductController::class, 'productUpdate']);
 
-    Route::get('/allGuilds', [GuildsController::class, 'getAllGuilds']);
 
     Route::get('/allCategories', [CategoriesController::class, 'getAllCategories']);
     Route::get('/categories/profileByGuild/{id}', [CategoriesController::class, 'getCategoriesByGuild']);
