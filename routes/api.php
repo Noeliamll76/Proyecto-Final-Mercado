@@ -10,6 +10,7 @@ use App\Http\Controllers\Image_productController;
 use App\Http\Controllers\OrdersController;
 use App\Models\Image_product;
 use App\Models\Product;
+use Database\Seeders\ProductSeeder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -72,6 +73,7 @@ Route::group([
     Route::get('/product/profile/{id}', [ProductController::class, 'productProfile']);
     Route::get('/product/allProductsByStore/{id}', [ProductController::class, 'allProductsByStore']);
     Route::delete('/product/delete/{id}', [ProductController::class, 'productDelete']);
+    Route::put('/product/update/{id}', [ProductController::class, 'productUpdate']);
 
     Route::get('/allGuilds', [GuildsController::class, 'getAllGuilds']);
 
