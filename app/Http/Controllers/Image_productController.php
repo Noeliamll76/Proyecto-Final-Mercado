@@ -205,4 +205,37 @@ class Image_productController extends Controller
             );
         }
     }
+    public function getImage_productById(Request $request, $id)
+    {
+        try {
+            if (!$image_product = Image_product::query()->find($id)) {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "This image doesn't exist",
+                        "data"=> "https://tse3.mm.bing.net/th?id=OIP.K-Wb7eb234IjBW8k2VNFxgHaHa&pid=Api&P=0&h=180"
+                    ],
+                    Response::HTTP_NOT_FOUND
+                );
+            }
+            return response()->json(
+                [
+                    "success" => true,
+                    "message" => "Get images_product successfully",
+                    "data" => $image_product->image
+                ],
+                Response::HTTP_OK
+            );
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error getting all images"
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
 }

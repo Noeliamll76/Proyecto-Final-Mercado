@@ -91,7 +91,7 @@ class UserController extends Controller
                 return response()->json(
                     [
                         "success" => false,
-                        "message" => "Error login user",
+                        "message" => "Error data user",
                         "error" => $validator->errors()
                     ],
                     Response::HTTP_BAD_REQUEST

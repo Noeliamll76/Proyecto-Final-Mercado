@@ -165,12 +165,12 @@ class ProductController extends Controller
     public function allProductsByStore(Request $request, $id)
     {
         try {
-            $email = auth()->user()->email;
-            $store = Store::query()->where('email', $email)->first();
+            // $email = auth()->user()->email;
+            // $store = Store::query()->where('email', $email)->first();
 
-            if (!$store || $store->id != $id) {
-                throw new Error('Incorrect');
-            };
+            // if (!$store || $store->id != $id) {
+            //     throw new Error('Incorrect');
+            // };
 
             $product = Product::query()->where('store_id', $id)->get();
 

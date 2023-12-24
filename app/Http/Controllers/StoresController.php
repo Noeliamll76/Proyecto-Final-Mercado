@@ -266,10 +266,14 @@ class StoresController extends Controller
                 throw new Error('Incorrect');
             };
 
-            if (!$stores = Store::query()->where('guild_id', $id)->get()) {
+            $stores = Store::query()
+                ->where('guild_id', $id)
+                ->where('is_active', true)
+                ->get();
+
+            if (count($stores) == 0) {
                 throw new Error('Incorrect 2');
             };
-            
             return response()->json(
                 [
                     "success" => true,

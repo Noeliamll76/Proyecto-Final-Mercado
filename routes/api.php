@@ -25,15 +25,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
-
-Route::post('/register', [UserController::class, 'register']);
-Route::post('/login', [UserController::class, 'login']);
-
-Route::get('/allGuilds', [GuildsController::class, 'getAllGuilds']);
-Route::get('/allStoresByGuild/{id}', [StoresController::class, 'allStoresByGuild']);
+    //     return $request->user();
+    // });
+    
+    
+    Route::post('/register', [UserController::class, 'register']);
+    Route::post('/login', [UserController::class, 'login']);
+    
+    Route::get('/allGuilds', [GuildsController::class, 'getAllGuilds']);
+    Route::get('/allStoresByGuild/{id}', [StoresController::class, 'allStoresByGuild']);
+    Route::get('/product/allProductsByStore/{id}', [ProductController::class, 'allProductsByStore']);
+    Route::get('/getImage_productById/{id}', [Image_productController::class, 'getImage_productById']);
 
 
 Route::group([
@@ -74,7 +76,6 @@ Route::group([
 
     Route::post('/product/register', [ProductController::class, 'productRegister']);
     Route::get('/product/profile/{id}', [ProductController::class, 'productProfile']);
-    Route::get('/product/allProductsByStore/{id}', [ProductController::class, 'allProductsByStore']);
     Route::delete('/product/delete/{id}', [ProductController::class, 'productDelete']);
     Route::put('/product/update/{id}', [ProductController::class, 'productUpdate']);
 
