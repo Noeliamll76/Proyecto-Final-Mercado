@@ -244,6 +244,13 @@ class UserController extends Controller
                     throw new Error('invalid');
                 }
             }
+            if ($request->has('phone')) {
+                if (strlen($phone) > 8 && strlen($phone) < 10) {
+                    $user->phone = $phone;
+                } else {
+                    throw new Error('invalid');
+                }
+            }
             if ($request->has('email')) {
                 $validator = Validator::make($request->all(), [
                     'email' => 'required | email',

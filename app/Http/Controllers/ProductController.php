@@ -126,12 +126,15 @@ class ProductController extends Controller
     {
         try {
             $email = auth()->user()->email;
+            $role=auth()->user()->roles;
             $store = Store::query()->where('email', $email)->first();
 
             $product = Product::query()->where('id', $id)->first();
 
-            if ($product->store_id !== $store->id) {
-                throw new Error('Incorrect');
+            if ($role === 'admin') {
+                if ($product->store_id !== $store->id) {
+                    throw new Error('Incorrect');
+                }
             }
             return response()->json(
                 [
@@ -165,13 +168,6 @@ class ProductController extends Controller
     public function allProductsByStore(Request $request, $id)
     {
         try {
-            // $email = auth()->user()->email;
-            // $store = Store::query()->where('email', $email)->first();
-
-            // if (!$store || $store->id != $id) {
-            //     throw new Error('Incorrect');
-            // };
-
             $product = Product::query()->where('store_id', $id)->get();
 
             return response()->json(
@@ -290,7 +286,7 @@ class ProductController extends Controller
                     Response::HTTP_NOT_FOUND
                 );
             }
-            
+
             return response()->json(
                 [
                     "success" => false,
