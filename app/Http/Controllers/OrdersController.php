@@ -106,11 +106,10 @@ class OrdersController extends Controller
         try {
             $user_id = auth()->user()->id;
 
-            $order = Order::query()
+            if (!$order = Order::query()
                 ->where('id', $id)
                 ->where('user_id', $user_id)
-                ->first();
-            if (count($order) == 0) {
+                ->first()) {
                 throw new Error('Invalid');
             };
             $ud = $request->input('ud');

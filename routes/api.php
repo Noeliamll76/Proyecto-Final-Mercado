@@ -89,6 +89,6 @@ Route::group([
     Route::put('/order/update/{id}', [OrdersController::class, 'orderUpdate']);
     Route::delete('/order/delete/{id}', [OrdersController::class, 'orderDelete']);
     Route::get('/order/basket', [OrdersController::class, 'ordersBasket']);
-    Route::put('/confirmBasket', [OrdersController::class, 'confirmBasket']);
+    Route::post('/confirmBasket', [OrdersController::class, 'confirmBasket']);
 
 });
