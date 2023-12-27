@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Http\Controllers;
@@ -49,10 +50,10 @@ class OrdersController extends Controller
             $import = ($ud * $price);
             $comment = $request->input('comment');
             if ($request->has('comment')) {
-                if (strlen($comment)>500) {
+                if (strlen($comment) > 500) {
                     throw new Error('Invalid');
                 }
-            }else{
+            } else {
                 $comment = " ";
             }
             $newOrder = Order::create(
@@ -105,17 +106,18 @@ class OrdersController extends Controller
         try {
             $user_id = auth()->user()->id;
 
-            if (!$order = Order::query()
+            $order = Order::query()
                 ->where('id', $id)
                 ->where('user_id', $user_id)
-                ->first()) {
+                ->first();
+            if (count($order) == 0) {
                 throw new Error('Invalid');
-            }
+            };
             $ud = $request->input('ud');
             $comment = $request->input('comment');
 
             if ($request->has('ud')) {
-                if (strlen($ud)>4) {
+                if (strlen($ud) > 4) {
                     throw new Error('Invalid');
                 }
                 $order->ud = $ud;
@@ -123,12 +125,12 @@ class OrdersController extends Controller
                 $order->import = $import;
             }
             if ($request->has('comment')) {
-                if (strlen($comment)>500) {
+                if (strlen($comment) > 500) {
                     throw new Error('Invalid');
                 }
                 $order->comment = $comment;
             }
-     
+
             $order->save();
 
             return response()->json(
@@ -172,7 +174,7 @@ class OrdersController extends Controller
                 ->first()) {
                 throw new Error('Invalid');
             }
-            
+
             $order->delete();
             return response()->json(
                 [
@@ -208,12 +210,14 @@ class OrdersController extends Controller
         try {
             $user_id = auth()->user()->id;
 
-            if (!$order = Order::query()
+            $order = Order::query()
                 ->where('user_id', $user_id)
                 ->where('invoiced', false)
-                ->get()) {
+                ->get();
+
+            if (count($order) == 0) {
                 throw new Error('Invalid');
-            }
+            };
             return response()->json(
                 [
                     "success" => true,
@@ -243,4 +247,49 @@ class OrdersController extends Controller
         }
     }
 
+    public function confirmBasket(Request $request)
+    {
+        try {
+            $user_id = auth()->user()->id;
+            $orders = Order::query()
+                ->where('user_id', $user_id)
+                ->where('invoiced', false)
+                ->get();
+            if (count($orders) == 0) {
+                throw new Error('Invalid');
+            };
+
+            $orders->each(function ($order) {
+                $order->invoiced = true;
+                $order->save();
+            });
+
+            return response()->json(
+                [
+                    "success" => true,
+                    "message" => "Basket confirm",
+                ],
+                Response::HTTP_OK
+            );
+        } catch (\Throwable $th) {
+            Log::error($th->getMessage());
+            if ($th->getMessage() === 'Invalid') {
+                return response()->json(
+                    [
+                        "success" => false,
+                        "message" => "Basket empty"
+                    ],
+                    Response::HTTP_NOT_FOUND
+                );
+            }
+            return response()->json(
+                [
+                    "success" => false,
+                    "message" => "Error confirming basket",
+
+                ],
+                Response::HTTP_INTERNAL_SERVER_ERROR
+            );
+        }
+    }
 }

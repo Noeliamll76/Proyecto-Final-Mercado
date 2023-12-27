@@ -211,11 +211,11 @@ class Image_productController extends Controller
             if (!$image_product = Image_product::query()->find($id)) {
                 return response()->json(
                     [
-                        "success" => false,
+                        "success" => true,
                         "message" => "This image doesn't exist",
                         "data"=> "https://tse3.mm.bing.net/th?id=OIP.K-Wb7eb234IjBW8k2VNFxgHaHa&pid=Api&P=0&h=180"
                     ],
-                    Response::HTTP_NOT_FOUND
+                    Response::HTTP_ACCEPTED
                 );
             }
             return response()->json(
