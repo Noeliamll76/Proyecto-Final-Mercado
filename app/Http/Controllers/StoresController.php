@@ -109,7 +109,7 @@ class StoresController extends Controller
             $store = Store::query()->where('email', $email)->first();
 
             if ($store->is_active === 0) {
-                throw new Error('Is active false');
+                throw new Error('invalid');
             }
             if (!$store || ($password !== $store->password)) {
                 throw new Error('invalid');
@@ -124,7 +124,7 @@ class StoresController extends Controller
             );
         } catch (\Throwable $th) {
             Log::error($th->getMessage());
-            if ($th->getMessage() === 'Is active false') {
+            if ($th->getMessage() === 'invalid') {
                 return response()->json(
                     [
                         "success" => false,

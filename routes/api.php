@@ -68,7 +68,7 @@ Route::group([
     Route::post('/users/logout', [UserController::class, 'logout']);
     Route::put('/users/update', [UserController::class, 'updateUsers']);
     Route::put('/users/password', [UserController::class, 'changePassword']);
-    Route::put('/users/inactivate', [UserController::class, 'inactivate']);
+    Route::post('/users/inactivate', [UserController::class, 'inactivate']);
 
     Route::post('/stores/register', [StoresController::class, 'storeRegister']);
     Route::get('/stores/profile', [StoresController::class, 'storeProfile']);
