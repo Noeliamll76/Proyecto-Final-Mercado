@@ -33,7 +33,7 @@ class ProductSeeder extends Seeder
                 'variety'=> 'morada',
                 'origin' => 'España',
                 'price' => '1.95',
-                'image_id' => '7',
+                'image_id' => '6',
             ]
         );
         DB::table('products')->insert(
@@ -44,7 +44,7 @@ class ProductSeeder extends Seeder
                 'variety'=> 'romana',
                 'origin' => 'España',
                 'price' => '0.95',
-                'image_id' => '1',
+                'image_id' => '16',
             ]
         );
         DB::table('products')->insert(
@@ -55,7 +55,7 @@ class ProductSeeder extends Seeder
                 'variety'=> 'Hass',
                 'origin' => 'Valencia',
                 'price' => '5.90',
-                'image_id' => '11',
+                'image_id' => '17',
             ]
         );
         DB::table('products')->insert(
@@ -77,7 +77,7 @@ class ProductSeeder extends Seeder
                 'variety'=> 'blanca o dulce',
                 'origin' => 'Valencia',
                 'price' => '2.50',
-                'image_id' => '8',
+                'image_id' => '7',
             ]
         );
         DB::table('products')->insert(
@@ -88,7 +88,7 @@ class ProductSeeder extends Seeder
                 'variety'=> 'noruego',
                 'origin' => 'Noruega',
                 'price' => '25.00',
-                'image_id' => '10',
+                'image_id' => '9',
             ]
         );
         DB::table('products')->insert(
@@ -99,7 +99,7 @@ class ProductSeeder extends Seeder
                 'variety'=> 'rojo',
                 'origin' => 'Castellon',
                 'price' => '30.00',
-                'image_id' => '11',
+                'image_id' => '10',
             ]
         );
         DB::table('products')->insert(
@@ -107,10 +107,10 @@ class ProductSeeder extends Seeder
                 'category_id' => '7',
                 'store_id' => '2',
                 'name' => 'merluza',
-                'variety'=> 'de pincho',
+                'variety'=> 'pincho',
                 'origin' => 'Atlantico',
                 'price' => '22.00',
-                'image_id' => '1',
+                'image_id' => '18',
             ]
         );
         DB::table('products')->insert(
@@ -121,7 +121,7 @@ class ProductSeeder extends Seeder
                 'variety'=> 'noruego',
                 'origin' => 'Noruega',
                 'price' => '24.50',
-                'image_id' => '10',
+                'image_id' => '9',
             ]
         );
         DB::table('products')->insert(
@@ -132,7 +132,7 @@ class ProductSeeder extends Seeder
                 'variety'=> 'comun',
                 'origin' => 'Atlantico',
                 'price' => '9.50',
-                'image_id' => '1',
+                'image_id' => '11',
             ]
         );
         DB::table('products')->insert(
@@ -143,7 +143,7 @@ class ProductSeeder extends Seeder
                 'variety'=> 'rayada',
                 'origin' => 'Denia',
                 'price' => '75.50',
-                'image_id' => '1',
+                'image_id' => '12',
             ]
         );
         DB::table('products')->insert(
@@ -155,6 +155,28 @@ class ProductSeeder extends Seeder
                 'origin' => 'valencia',
                 'price' => '2.50',
                 'image_id' => '13',
+            ]
+        );
+        DB::table('products')->insert(
+            [   
+                'category_id' => '3',
+                'store_id' => '5',
+                'name' => 'detergente ORO',
+                'variety'=> 'marsella',
+                'origin' => 'valencia',
+                'price' => '5.40',
+                'image_id' => '14',
+            ]
+        );
+        DB::table('products')->insert(
+            [   
+                'category_id' => '8',
+                'store_id' => '6',
+                'name' => 'pan barra',
+                'variety'=> '250 grs',
+                'origin' => 'valencia',
+                'price' => '0.80',
+                'image_id' => '15',
             ]
         );
     }

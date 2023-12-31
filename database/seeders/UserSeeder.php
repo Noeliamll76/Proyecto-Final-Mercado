@@ -145,5 +145,19 @@ class UserSeeder extends Seeder
                 'roles' => "user"
             ]
         );
+        DB::table('users')->insert(
+            [
+                'name' => 'Rafael Llopis',
+                'address' => 'C/ Mayor, 30, pta. 6',
+                'zip_code' => '46022',
+                'town' => 'Valencia',
+                'phone' => '600999888',
+                'DNI' => '60099988L',
+                'birthdate' => '1964/07/19',
+                'email' => 'rafael@rafael.com',
+                'password' => Hash::make('password'),
+                'roles' => "admin"
+            ]
+        );
     }
 }

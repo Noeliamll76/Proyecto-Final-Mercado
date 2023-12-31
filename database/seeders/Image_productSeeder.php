@@ -105,7 +105,7 @@ class Image_productSeeder extends Seeder
         DB::table('image_product')->insert(
             [   
                 'name_product' => 'gamba',
-                'variety' => 'rallada',
+                'variety' => 'rayada',
                 'image' => 'https://tse1.mm.bing.net/th?id=OIP.sT1maCUaq2kvoxkiIe-P_wHaE7&pid=Api&P=0&h=180',
      
             ]
@@ -115,6 +115,46 @@ class Image_productSeeder extends Seeder
                 'name_product' => 'lejia',
                 'variety' => 'EL CHE',
                 'image' => 'https://cdn.pymesenlared.es/img/291/3752/65212/lejia-normal-2l.jpg',
+     
+            ]
+        );
+        DB::table('image_product')->insert(
+            [   
+                'name_product' => 'detergente ORO',
+                'variety' => 'marsella',
+                'image' => 'https://productosdelimpiezayservicios.es/845-large_default/detergente-marsella-oro-5-litros.jpg',
+     
+            ]
+        );
+        DB::table('image_product')->insert(
+            [   
+                'name_product' => 'pan barra',
+                'variety' => '250 grs',
+                'image' => 'https://tse4.mm.bing.net/th?id=OIP.rDcKyiXwAo6Z60BnOSW-JgHaFj&pid=Api&P=0&h=180',
+     
+            ]
+        );
+        DB::table('image_product')->insert(
+            [   
+                'name_product' => 'lechuga',
+                'variety' => 'romana',
+                'image' => 'https://tse3.mm.bing.net/th?id=OIP.GxRzNUZb-TwPRWhSij7VkAHaE4&pid=Api&P=0&h=180',
+     
+            ]
+        );
+        DB::table('image_product')->insert(
+            [   
+                'name_product' => 'aguacate',
+                'variety' => 'Hass',
+                'image' => 'https://tse1.mm.bing.net/th?id=OIP.gsIq4xozqaFIxldgdANqJQHaEz&pid=Api&P=0&h=180',
+     
+            ]
+        );
+        DB::table('image_product')->insert(
+            [   
+                'name_product' => 'merluza',
+                'variety' => 'pincho',
+                'image' => 'https://tse3.explicit.bing.net/th?id=OIP.z_0Vs1ll6BXo7g52rFRtJQHaEj&pid=Api&P=0&h=180',
      
             ]
         );

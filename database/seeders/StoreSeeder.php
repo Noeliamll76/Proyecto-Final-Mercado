@@ -88,5 +88,19 @@ class StoreSeeder extends Seeder
                 'roles' => "admin"
             ]
         );
+        DB::table('stores')->insert(
+            [
+                'name' => 'Horno El Reloj',
+                'owner' => "Rafael Llopis",
+                'location' => 'Puesto 2-6 nave 2',
+                'guild_id' => '5',
+                'is_active' => true,
+                'image' => 'https://tse4.mm.bing.net/th?id=OIP.ZdGqdigEKDMSq3fTVjTH5gHaEK&pid=Api&P=0&h=180',
+                'description'=> 'El pan de toda la vida',
+                'email' => 'rafael@rafael.com',
+                'password' => Hash::make('password'),
+                'roles' => "admin"
+            ]
+        );
     }
 }
