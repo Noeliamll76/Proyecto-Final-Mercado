@@ -23,6 +23,7 @@ class StoreSeeder extends Seeder
                 'guild_id' => '1',
                 'is_active' => true,
                 'image' => 'https://tse1.mm.bing.net/th?id=OIP.WDyTNPoKCAFAgbVT-4dSagHaEb&pid=Api&P=0&h=180',
+                'description'=> 'Verduras de cosecha propia',
                 'email' => 'paco@paco.com',
                 'password' => Hash::make('password'),
                 'roles' => "admin"
@@ -38,6 +39,7 @@ class StoreSeeder extends Seeder
                 'guild_id' => '8',
                 'is_active' => true,
                 'image' => 'https://tse3.mm.bing.net/th?id=OIP.qNc322sGXXkDHVzmZBrjhgHaEv&pid=Api&P=0&h=180',
+                'description'=> 'Pescados directos de la lonja',
                 'email' => 'loli@loli.com',
                 'password' => Hash::make('password'),
                 'roles' => "admin"
@@ -52,6 +54,7 @@ class StoreSeeder extends Seeder
                 'guild_id' => '1',
                 'is_active' => true,
                 'image' => 'https://tse2.mm.bing.net/th?id=OIP.7Rq5YHh_FV7T9Ults-gwmAHaE7&pid=Api&P=0&h=180',
+                'description'=> 'Verduras de cosecha propia',
                 'email' => 'amparo@amparo.com',
                 'password' => Hash::make('password'),
                 'roles' => "admin"
@@ -65,6 +68,7 @@ class StoreSeeder extends Seeder
                 'guild_id' => '8',
                 'is_active' => true,
                 'image' => 'http://desdesoria.es/quemecomaeltigre/wp-content/uploads/2014/04/image30.jpg',
+                'description'=> 'Productos seleccionados',
                 'email' => 'ricardo@ricardo.com',
                 'password' => Hash::make('password'),
                 'roles' => "admin"
@@ -78,6 +82,7 @@ class StoreSeeder extends Seeder
                 'guild_id' => '2',
                 'is_active' => true,
                 'image' => 'https://comerciopetrer.es/wp-content/uploads/2021/02/droguer%C3%ADa-mari-4.jpg',
+                'description'=> 'Todo lo necesario para tu hogar',
                 'email' => 'teresa@teresa.com',
                 'password' => Hash::make('password'),
                 'roles' => "admin"
