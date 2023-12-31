@@ -48,7 +48,7 @@ class UserSeeder extends Seeder
 
         DB::table('users')->insert(
             [
-                'name' => Str::random(10),
+                'name' => 'Paco Martinez',
                 'address' => 'C/ Marino Sirera, 6, pta 21',
                 'zip_code' => '46011',
                 'town' => 'Valencia',
@@ -57,13 +57,13 @@ class UserSeeder extends Seeder
                 'birthdate' => '1990/02/26',
                 'email' => 'paco@paco.com',
                 'password' => Hash::make('password'),
-                'roles' => "user"
+                'roles' => "admin"
             ]
         );
 
         DB::table('users')->insert(
             [
-                'name' => 'Loli',
+                'name' => 'Loli Panoli',
                 'address' => 'C/ Escalante, 12, bajo',
                 'zip_code' => '46011',
                 'town' => 'Valencia',
@@ -72,10 +72,51 @@ class UserSeeder extends Seeder
                 'birthdate' => '1964/04/04',
                 'email' => 'loli@loli.com',
                 'password' => Hash::make('password'),
-                'roles' => "user"
+                'roles' => "admin"
             ]
         );
-
+        DB::table('users')->insert(
+            [
+                'name' => 'Amparo Blay',
+                'address' => 'C/ Reina, 12, bajo',
+                'zip_code' => '46011',
+                'town' => 'Valencia',
+                'phone' => '600999888',
+                'DNI' => '60099988L',
+                'birthdate' => '1964/04/04',
+                'email' => 'amparo@amparo.com',
+                'password' => Hash::make('password'),
+                'roles' => "admin"
+            ]
+        );
+        DB::table('users')->insert(
+            [
+                'name' => 'Ricardo Mengol',
+                'address' => 'Avd. Blasco Ibañez, 118, pta 25',
+                'zip_code' => '46022',
+                'town' => 'Valencia',
+                'phone' => '600999888',
+                'DNI' => '60099988L',
+                'birthdate' => '1964/04/04',
+                'email' => 'ricardo@ricardo.com',
+                'password' => Hash::make('password'),
+                'roles' => "admin"
+            ]
+        );
+        DB::table('users')->insert(
+            [
+                'name' => 'Teresa Bosch',
+                'address' => 'C/ Serreria, 118, pta 25',
+                'zip_code' => '46022',
+                'town' => 'Valencia',
+                'phone' => '600999888',
+                'DNI' => '60099988L',
+                'birthdate' => '1964/04/04',
+                'email' => 'teresa@teresa.com',
+                'password' => Hash::make('password'),
+                'roles' => "admin"
+            ]
+        );
         DB::table('users')->insert(
             [
                 'name' => 'Manuela',
@@ -86,6 +127,20 @@ class UserSeeder extends Seeder
                 'DNI' => '60099988L',
                 'birthdate' => '1964/07/19',
                 'email' => 'manuela@manuela.com',
+                'password' => Hash::make('password'),
+                'roles' => "user"
+            ]
+        );
+        DB::table('users')->insert(
+            [
+                'name' => 'Anselmo',
+                'address' => 'C/ Mayor, 30, pta. 6',
+                'zip_code' => '46022',
+                'town' => 'Valencia',
+                'phone' => '600999888',
+                'DNI' => '60099988L',
+                'birthdate' => '1964/07/19',
+                'email' => 'anselmo@anselmo.com',
                 'password' => Hash::make('password'),
                 'roles' => "user"
             ]
