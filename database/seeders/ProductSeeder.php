@@ -82,7 +82,7 @@ class ProductSeeder extends Seeder
         );
         DB::table('products')->insert(
             [   
-                'category_id' => '7',
+                'category_id' => '10',
                 'store_id' => '2',
                 'name' => 'salmon',
                 'variety'=> 'noruego',
@@ -93,7 +93,7 @@ class ProductSeeder extends Seeder
         );
         DB::table('products')->insert(
             [   
-                'category_id' => '7',
+                'category_id' => '10',
                 'store_id' => '2',
                 'name' => 'salmonete',
                 'variety'=> 'rojo',
@@ -104,7 +104,7 @@ class ProductSeeder extends Seeder
         );
         DB::table('products')->insert(
             [   
-                'category_id' => '7',
+                'category_id' => '10',
                 'store_id' => '2',
                 'name' => 'merluza',
                 'variety'=> 'pincho',
@@ -115,7 +115,7 @@ class ProductSeeder extends Seeder
         );
         DB::table('products')->insert(
             [   
-                'category_id' => '7',
+                'category_id' => '10',
                 'store_id' => '4',
                 'name' => 'salmon',
                 'variety'=> 'noruego',
@@ -126,7 +126,7 @@ class ProductSeeder extends Seeder
         );
         DB::table('products')->insert(
             [   
-                'category_id' => '7',
+                'category_id' => '10',
                 'store_id' => '4',
                 'name' => 'sardina',
                 'variety'=> 'comun',
@@ -137,7 +137,7 @@ class ProductSeeder extends Seeder
         );
         DB::table('products')->insert(
             [   
-                'category_id' => '7',
+                'category_id' => '10',
                 'store_id' => '4',
                 'name' => 'gamba',
                 'variety'=> 'rayada',
